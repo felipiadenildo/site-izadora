@@ -149,4 +149,10 @@ Rodada de feedback pontual sobre o resultado da v2. Decisões confirmadas com o 
 - [x] Ícones sociais removidos do rodapé
 - [x] `astro check` + `npm run build` limpos
 - [x] Revisão visual local: Home e Jornada, claro/escuro
-- [ ] Deploy no GitHub Pages (próximo passo)
+- [x] Deploy no GitHub Pages
+
+## Site no ar
+
+**https://felipiadenildo.github.io/site-izadora/**
+
+Repositório público: https://github.com/felipiadenildo/site-izadora. Deploy automático a cada push na `main` via GitHub Actions (`.github/workflows/deploy.yml`). Pendências continuam as mesmas da Fase 6 (e-mail, CV em PDF, revisão de voz pela própria Izadora, domínio próprio se quiserem no futuro).
