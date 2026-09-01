@@ -1,8 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
-import { person } from "../data/person";
 import ThemeToggle from "./ThemeToggle.astro";
-import SocialLinks from "./SocialLinks.astro";
+import LangToggle from "./LangToggle.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -15,17 +14,10 @@ const navItems: Array<{ href: string; label: string }> = [
   { href: "/journey/", label: t("nav.journey") },
   { href: "/blog/", label: t("nav.blog") },
 ];
-
-const otherLang = lang === "en" ? "pt" : "en";
-const langSwitchHref = useTranslatedPath(otherLang)(bareCurrentPath, otherLang);
 ---
 
-<header class="sticky top-0 z-40 border-b border-line/70 bg-canvas/90 backdrop-blur">
-  <div class="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-    <a href={translatePath("/")} class="font-display text-base font-semibold tracking-tight text-ink">
-      {person.shortName}
-    </a>
-
+<header class="sticky top-0 z-40 bg-canvas/90 backdrop-blur">
+  <div class="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
     <nav aria-label="Primary" class="hidden sm:block">
       <ul class="flex items-center gap-5 text-sm text-ink-muted">
         {
@@ -47,32 +39,27 @@ const langSwitchHref = useTranslatedPath(otherLang)(bareCurrentPath, otherLang);
       </ul>
     </nav>
 
+    <button
+      id="mobile-menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      class="inline-flex items-center justify-center rounded-full border border-line p-2 text-ink sm:hidden"
+    >
+      <span class="sr-only">Menu</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+
     <div class="flex items-center gap-3">
-      <SocialLinks class="hidden md:flex" />
-      <a
-        href={langSwitchHref}
-        class="text-sm text-ink-muted transition-colors hover:text-accent"
-      >
-        {t("nav.langSwitch")}
-      </a>
+      <LangToggle />
       <ThemeToggle labelLight={t("theme.toLight")} labelDark={t("theme.toDark")} />
-      <button
-        id="mobile-menu-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-        class="inline-flex items-center justify-center rounded-full border border-line p-2 text-ink sm:hidden"
-      >
-        <span class="sr-only">Menu</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <path d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
     </div>
   </div>
 
-  <nav id="mobile-menu" aria-label="Primary mobile" hidden class="border-t border-line/70 sm:hidden">
-    <ul class="mx-auto flex max-w-3xl flex-col px-4 py-2 text-sm">
+  <nav id="mobile-menu" aria-label="Primary mobile" hidden class="sm:hidden">
+    <ul class="mx-auto flex max-w-3xl flex-col px-4 pb-3 text-sm">
       {
         navItems.map((item) => {
           const isCurrent = bareCurrentPath === item.href;
@@ -89,9 +76,6 @@ const langSwitchHref = useTranslatedPath(otherLang)(bareCurrentPath, otherLang);
           );
         })
       }
-      <li class="px-2 pt-1.5">
-        <SocialLinks class="justify-start" />
-      </li>
     </ul>
   </nav>
 </header>

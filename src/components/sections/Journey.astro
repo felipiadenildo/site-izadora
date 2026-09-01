@@ -1,9 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import { timeline, type TimelineIcon } from "../../data/timeline";
-import { person } from "../../data/person";
-import kufiaPhoto from "../../assets/photos/izadora-kufia.jpeg";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -21,12 +18,10 @@ const ICONS: Record<TimelineIcon, string> = {
   flaskRays:
     '<path d="M12 1v2.4M8.7 2 9.6 4M15.3 2 14.4 4"/><path d="M9.5 4.5h5"/><path d="M10.2 4.5v5.7a3 3 0 0 1-.5 1.63L5.9 18.9A2 2 0 0 0 7.6 22h8.8a2 2 0 0 0 1.7-3.1l-3.8-6.57a3 3 0 0 1-.5-1.63V4.5"/>',
 };
-
-const currentIndex = timeline.findIndex((entry) => entry.current);
 ---
 
 <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
-  <h1 class="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">{t("nav.journey")}</h1>
+  <h1 class="font-display text-4xl font-medium tracking-tight text-ink sm:text-5xl">{t("nav.journey")}</h1>
   <p class="mt-3 max-w-xl text-base leading-relaxed text-ink-muted">{t("journey.intro")}</p>
 
   <ol class="mt-10">
@@ -62,17 +57,11 @@ const currentIndex = timeline.findIndex((entry) => entry.current);
             </span>
 
             <div class="journey-content">
-              <p class="text-xs font-medium uppercase tracking-wide text-highlight">
+              <p class="font-mono text-xs uppercase tracking-wide text-highlight">
                 {entry.period} · {entry.place}
               </p>
               <h2 class="mt-1 font-display text-lg font-semibold text-ink">{entry.title[lang]}</h2>
               <p class="mt-1.5 max-w-md text-sm leading-relaxed text-ink-muted">{entry.body[lang]}</p>
-
-              {i === currentIndex && (
-                <div class="polaroid" aria-hidden="true">
-                  <Image src={kufiaPhoto} alt={person.name} width={200} height={200} class="h-24 w-24 rounded-sm object-cover sm:h-28 sm:w-28" />
-                </div>
-              )}
             </div>
           </div>
         </li>
@@ -130,17 +119,6 @@ const currentIndex = timeline.findIndex((entry) => entry.current);
   .journey-content {
     padding-bottom: 0.5rem;
     position: relative;
-  }
-
-  .polaroid {
-    margin-top: 0.75rem;
-    display: inline-block;
-    padding: 0.5rem 0.5rem 1.1rem;
-    background: var(--color-canvas-subtle);
-    border: 1px solid var(--color-line);
-    border-radius: 2px;
-    transform: rotate(-3deg);
-    box-shadow: var(--shadow-soft);
   }
 </style>
 

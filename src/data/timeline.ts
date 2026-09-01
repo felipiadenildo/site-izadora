@@ -95,10 +95,10 @@ export const timeline: TimelineEntry[] = [
     place: "São Carlos, Brazil",
     icon: "flaskRays",
     current: true,
-    title: { en: "Postdoctoral researcher, UFSCar", pt: "Pesquisadora de pós-doutorado, UFSCar" },
+    title: { en: "Doctoral researcher, UFSCar", pt: "Doutoranda, UFSCar" },
     body: {
-      en: "Back in Brazil as a FAPESP fellow in Prof. Ivo F. Teixeira's group, designing single-atom photocatalysts — with regular use of the Sirius synchrotron and electron microscopy at CNPEM.",
-      pt: "De volta ao Brasil como bolsista FAPESP no grupo do Prof. Ivo F. Teixeira, desenhando fotocatalisadores single-atom — com uso frequente do síncrotron Sirius e da microscopia eletrônica do CNPEM.",
+      en: "Back in Brazil, starting a new doctorate as a FAPESP fellow in Prof. Ivo F. Teixeira's lab, designing single-atom photocatalysts — with regular use of the Sirius synchrotron and electron microscopy at CNPEM.",
+      pt: "De volta ao Brasil, iniciando um novo doutorado como bolsista FAPESP no laboratório do Prof. Ivo F. Teixeira, desenhando fotocatalisadores single-atom — com uso frequente do síncrotron Sirius e da microscopia eletrônica do CNPEM.",
     },
   },
 ];

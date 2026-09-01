@@ -8,11 +8,12 @@ Roteiro e checklist do desenvolvimento do site pessoal/acadêmico da Dra. Izador
 - **Idiomas**: inglês como padrão (`/`), português em `/pt/*`. Slugs de rota em inglês nas duas versões (`/about`, `/pt/about`) para simplificar o roteamento i18n do Astro.
 - **Hospedagem**: GitHub Pages para começar (grátis, já versionado); migração futura para Cloudflare Pages/Netlify é trivial pois o output é estático.
 - **Tom**: sóbrio/moderno como base, com humor leve e "fofura" com tema de química/ciência em microcopy, placeholders e alguns detalhes visuais — sem comprometer a seriedade acadêmica do conteúdo factual.
-- **Dados reais**: currículo/trajetória via ORCID (0000-0003-1820-5410), FAPESP, projeto de pós-doc (bolsa 20/14741-6). 3 fotos reais fornecidas (ver `src/assets/photos/`). Sem CV em PDF público e sem foto de "media kit" formal — placeholders explícitos até serem enviados.
+- **Dados reais**: currículo/trajetória via ORCID (0000-0003-1820-5410), FAPESP, doutorado atual na UFSCar (bolsa FAPESP vinculada ao auxílio 20/14741-6 do Prof. Ivo Teixeira) e doutorado concluído na Shinshu University (Japão). Sem CV em PDF público e sem e-mail de contato publicado — placeholders explícitos até serem enviados.
 - **Conteúdo narrativo (bios, textos de seção)**: redigido a partir de fontes públicas, em terceira pessoa — deve ser revisado/personalizado pela própria Izadora antes de publicação definitiva.
-- **Fotos reais**: 3 fotos enviadas pelo usuário foram integradas — jaleco no Sirius/LNLS (hero + destaque em Pesquisa/Jornada), foto casual (About) e foto com kufia (avatar circular na Jornada).
+- **Fotos**: 3 fotos reais recebidas (ver `src/assets/photos/`), mas por decisão do usuário (v3) só a foto casual está em uso no momento, só na Home (seção Sobre). As outras duas ficam disponíveis no repositório para quando ele liberar mais fotos.
 - **E-mail de contato**: não encontrado publicamente; `person.email` fica `null` de propósito e a página de Contato mostra um placeholder em vez de arriscar publicar um endereço errado.
-- **Dark mode**: removido do CSS por ora — a versão automática via `prefers-color-scheme` tinha problemas reais de contraste (texto petrol-900 sobre fundo escuro) porque nem todo uso semântico de cor tinha uma contraparte escura. Fica como melhoria futura, feita com o devido cuidado (tokens semânticos + toggle manual), não como media query solta.
+- **Tema claro/escuro**: sistema de tokens semânticos com os dois modos contrast-checados (WCAG AA) e toggle manual persistido em `localStorage`; escuro é o padrão para quem visita pela 1ª vez. Ver v2/v3 abaixo para o histórico (a 1ª tentativa, só com `prefers-color-scheme`, tinha bugs reais de contraste).
+- **Fonte**: Literata (títulos + corpo) + IBM Plex Mono (rótulos pequenos) — ver v3 abaixo.
 
 ## Fases
 
@@ -94,4 +95,36 @@ Pivot pedido pelo usuário: v1 estava densa demais ("muitos elementos diferentes
 - [x] `astro check` + `npm run build` limpos após o redesign
 - [x] Revisão visual local via browser: Home (claro/escuro), Journey (claro/escuro), Blog, EN + PT
 - [ ] Confirmação visual em viewport mobile real (automação de browser não confirmou o resize — recomendo checar rapidamente no celular ou no DevTools)
-- [ ] Feedback do usuário sobre o resultado (servidor local rodando em `http://localhost:4321`) antes de seguir para polimento fino
+- [x] Feedback do usuário — pediu ajustes pontuais, ver v3 abaixo
+
+---
+
+## v3 — Ajustes finos (setembro 2026)
+
+Rodada de feedback pontual sobre o resultado da v2. Decisões confirmadas com o usuário (incluindo comparação ao vivo de fontes/cores via preview local):
+
+- **Fonte**: Literata (títulos + corpo) — trocou Fraunces/Inter. Escolhida entre 5 opções comparadas lado a lado com texto real do site. IBM Plex Mono para rótulos pequenos (local, datas, tags), replicando o padrão da página de referência (felipiadenildo.github.io).
+- **Modo claro**: sepia `#F4ECD8` ("papel de carta") — trocou o off-white anterior. Paleta recalculada e recontrastada (WCAG) para o novo tom, incluindo a caixa de placeholder (`--color-tint`) que precisou ficar mais saturada para não se confundir com o fundo.
+- **Tema padrão**: escuro para quem visita pela 1ª vez (antes seguia a preferência do sistema).
+- **Cargo atual**: corrigido de "postdoctoral researcher" para **doutoranda/doctoral researcher, UFSCar** — ela concluiu o doutorado na Shinshu University (Japão) e iniciou um **novo** doutorado na UFSCar, no laboratório do Prof. Ivo Teixeira. `education.ts` ganhou uma segunda entrada de doutorado; Jornada e Sobre foram reescritos para refletir isso.
+- **Local no hero**: "São Carlos, SP — Brazil" → "São Carlos, São Paulo, Brazil/Brasil" (por extenso, sem travessão), igual ao formato da página de referência.
+- **Foto**: só a casual, só na Home (dentro de Sobre, ao lado do texto — hero ficou só texto). A foto do jaleco e a da kufia saíram de uso por enquanto (ainda em `src/assets/photos/`, disponíveis pra quando ela liberar mais fotos). A "polaroid" da Jornada foi removida por causa disso.
+- **Header**: nome "Izadora Menezes" removido da barra (só nav + utilidades); linha divisória removida; ícones sociais saíram do header (ficaram só em Contato e no rodapé); alternador EN/PT virou um segmented control de dois botões, no mesmo estilo da página de referência.
+- **Seção Novidades**: adicionada à Home (primeira seção, antes de Sobre) — comparei com a estrutura da página da Risa Shinoda e essa era a peça que faltava. Conteúdo real, derivado do que já existia (publicação aceita, seleção CNPEM, início do doutorado atual).
+- **Cabeçalhos de seção**: viraram rótulos pequenos em caixa alta/mono (em vez de heading serifado grande), para dar mais hierarquia entre "título de página" e "título de seção".
+
+### Fase 8 — Ajustes finos (execução)
+- [x] Pesquisa da fonte/estrutura da página de referência (computed styles via devtools) — Newsreader descartada em favor de comparação ao vivo; Literata escolhida
+- [x] Preview local (fonte + paleta) servido via `http.server` para o usuário conferir antes de aplicar
+- [x] Troca de fontes (Literata + IBM Plex Mono), remoção de Fraunces/Inter dos deps
+- [x] Paleta clara recalculada para sepia, recontrastada (WCAG AA)
+- [x] Tema escuro como padrão
+- [x] Correção doutorado (dados + textos em Home/Jornada/Sobre, EN e PT)
+- [x] Formato do local no hero
+- [x] Foto: só casual, só na Home/Sobre; removida da Jornada
+- [x] Header simplificado (sem nome, sem borda, sem ícones sociais) + `LangToggle.astro` novo
+- [x] Ícones sociais movidos para Contato + rodapé
+- [x] Seção Novidades (`news.ts` + `NewsList.astro`)
+- [x] `astro check` + `npm run build` limpos
+- [x] Revisão visual local: Home/Jornada claro+escuro, EN+PT
+- [ ] Confirmação mobile real (mesma limitação de ferramenta da v2)

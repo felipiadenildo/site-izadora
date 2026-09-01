@@ -10,9 +10,9 @@ const t = useTranslations(lang);
   {
     publications.map((pub) => (
       <li class="grid grid-cols-[6.5rem_1fr] gap-4 py-3 sm:grid-cols-[8rem_1fr]">
-        <span class="text-sm tabular-nums text-ink-muted">
+        <span class="font-mono text-xs text-ink-muted">
           {pub.year}
-          {pub.forthcoming && <span class="ml-1.5 text-xs text-highlight">· {t("publications.forthcoming")}</span>}
+          {pub.forthcoming && <span class="ml-1.5 text-highlight">· {t("publications.forthcoming")}</span>}
         </span>
         <div class="text-sm text-ink">
           <a

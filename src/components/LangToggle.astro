@@ -1,0 +1,32 @@
+---
+import { getLangFromUrl, useTranslatedPath } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const bareCurrentPath = Astro.url.pathname.replace(/^\/pt(\/|$)/, "/");
+
+const enHref = useTranslatedPath("en")(bareCurrentPath, "en");
+const ptHref = useTranslatedPath("pt")(bareCurrentPath, "pt");
+---
+
+<div class="inline-flex items-center rounded-md border border-line p-0.5 font-mono text-xs tracking-wide" role="group" aria-label="Language">
+  <a
+    href={enHref}
+    aria-current={lang === "en" ? "page" : undefined}
+    class:list={[
+      "rounded px-2 py-1 transition-colors",
+      lang === "en" ? "bg-ink text-canvas" : "text-ink-muted hover:text-ink",
+    ]}
+  >
+    EN
+  </a>
+  <a
+    href={ptHref}
+    aria-current={lang === "pt" ? "page" : undefined}
+    class:list={[
+      "rounded px-2 py-1 transition-colors",
+      lang === "pt" ? "bg-ink text-canvas" : "text-ink-muted hover:text-ink",
+    ]}
+  >
+    PT
+  </a>
+</div>

@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 /* Self-hosted variable fonts — no third-party font requests. */
-@import "@fontsource-variable/fraunces/standard.css";
-@import "@fontsource-variable/fraunces/standard-italic.css";
-@import "@fontsource-variable/inter";
+@import "@fontsource-variable/literata/standard.css";
+@import "@fontsource-variable/literata/standard-italic.css";
+@import "@fontsource/ibm-plex-mono/500.css";
 
 /*
  * Semantic color system. Every component references ONE of these roles —
@@ -12,30 +12,32 @@
  * themes; see the token comments for the ratios.
  */
 @theme {
-  --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
-  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Literata Variable", ui-serif, Georgia, serif;
+  --font-sans: "Literata Variable", ui-serif, Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --color-canvas: #faf6ef; /* page background */
-  --color-canvas-subtle: #f2ece0; /* rare secondary surface (placeholder box) */
-  --color-ink: #211f1c; /* body text — 15.3:1 on canvas */
-  --color-ink-muted: #5c564c; /* secondary text — 6.7:1 on canvas */
-  --color-line: #e4dbc9; /* hairline borders/rules */
+  /* Light theme — "letter paper" sepia, not a clinical off-white. */
+  --color-canvas: #f4ecd8; /* page background */
+  --color-canvas-subtle: #ecdfc0; /* rare secondary surface */
+  --color-ink: #211f1c; /* body text — 14.0:1 on canvas */
+  --color-ink-muted: #5c564c; /* secondary text — 6.2:1 on canvas */
+  --color-line: #c2a877; /* hairline borders/rules */
 
-  --color-accent: #144a45; /* links, small accents — 9.3:1 on canvas */
+  --color-accent: #12403c; /* links, small accents — 9.8:1 on canvas */
   --color-accent-strong: #0e3835; /* filled buttons */
-  --color-on-accent-strong: #faf6ef; /* text on filled buttons — 11.9:1 */
-  --color-highlight: #9c5f18; /* eyebrows / small-caps labels — 4.8:1 on canvas */
-  --color-tint: #fbe9cf; /* placeholder-box fill */
-  --color-tint-border: #d98e3b; /* placeholder-box border, focus ring */
+  --color-on-accent-strong: #faf6ef; /* text on filled buttons */
+  --color-highlight: #8a5416; /* eyebrows / small-caps labels — 5.3:1 on canvas */
+  --color-tint: #e6d2a0; /* placeholder-box fill */
+  --color-tint-border: #a8621a; /* placeholder-box border, focus ring */
 
-  --shadow-soft: 0 1px 2px rgb(33 31 28 / 0.04), 0 8px 24px -12px rgb(33 31 28 / 0.18);
+  --shadow-soft: 0 1px 2px rgb(33 31 28 / 0.06), 0 8px 24px -12px rgb(33 31 28 / 0.22);
 }
 
 /*
  * Dark theme: a real second pass, not an inversion filter. Overrides the
  * same tokens above so every component stays legible without extra classes.
  * Toggled via [data-theme] on <html>, set by an inline pre-paint script
- * (see BaseLayout) to avoid a flash of the wrong theme.
+ * (see BaseLayout) — dark is the default for first-time visitors.
  */
 :root[data-theme="dark"] {
   --color-canvas: #101815;

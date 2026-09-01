@@ -9,17 +9,17 @@ export const ui = {
     "nav.home": "Home",
     "nav.journey": "Journey",
     "nav.blog": "Blog",
-    "nav.langSwitch": "Português",
     "nav.skipToContent": "Skip to content",
 
     "theme.toLight": "Switch to light mode",
     "theme.toDark": "Switch to dark mode",
 
-    "hero.location": "São Carlos, SP — Brazil",
-    "hero.role": "Postdoctoral researcher, UFSCar — FAPESP fellow",
+    "hero.location": "São Carlos, São Paulo, Brazil",
+    "hero.role": "Doctoral researcher, UFSCar · FAPESP fellow",
     "hero.tagline": "Chemist researching how light can drive chemical reactions, atom by atom.",
-    "hero.photoAlt": "Izadora in a lab coat at the Sirius synchrotron facility (CNPEM)",
+    "hero.photoAlt": "Izadora",
 
+    "jump.news": "News",
     "jump.about": "About",
     "jump.education": "Education",
     "jump.research": "Research",
@@ -28,6 +28,7 @@ export const ui = {
     "jump.participation": "Participation",
     "jump.contact": "Contact",
 
+    "section.news": "News",
     "section.about": "About",
     "section.education": "Education",
     "section.research": "Research",
@@ -37,15 +38,15 @@ export const ui = {
     "section.contact": "Contact",
 
     "about.body1":
-      "Izadora works on catalysis and materials chemistry, focused on using light instead of heat to drive chemical reactions. She's currently a postdoctoral researcher at UFSCar, on a FAPESP fellowship, designing single-atom catalysts anchored on carbon nitrides.",
+      "Izadora works on catalysis and materials chemistry, focused on using light instead of heat to drive chemical reactions. She's currently a doctoral researcher at UFSCar, in Prof. Ivo F. Teixeira's lab, on a FAPESP fellowship, designing single-atom catalysts anchored on carbon nitrides.",
     "about.body2":
-      "Her path here went through UFMG, a research stay in Argentina, an exchange year in the UK, and a PhD at Shinshu University in Japan.",
+      "Before that, she completed a doctorate at Shinshu University in Japan. Her path there went through UFMG, a research stay in Argentina, and an exchange year in the UK.",
     "about.journeyCta": "Read the full journey",
 
     "research.summary":
       "Graphitic carbon nitrides as platforms for single-atom photocatalysis — designing catalysts atom by atom to convert sunlight into useful chemical reactions.",
     "research.grantLabel": "FAPESP grant",
-    "research.advisorLabel": "Host researcher",
+    "research.advisorLabel": "Advisor",
     "research.interestsLabel": "Research interests",
 
     "publications.viewAll": "All publications on ORCID",
@@ -82,17 +83,17 @@ export const ui = {
     "nav.home": "Início",
     "nav.journey": "Jornada",
     "nav.blog": "Blog",
-    "nav.langSwitch": "English",
     "nav.skipToContent": "Pular para o conteúdo",
 
     "theme.toLight": "Mudar para modo claro",
     "theme.toDark": "Mudar para modo escuro",
 
-    "hero.location": "São Carlos, SP — Brasil",
-    "hero.role": "Pesquisadora de pós-doutorado, UFSCar — bolsista FAPESP",
+    "hero.location": "São Carlos, São Paulo, Brasil",
+    "hero.role": "Doutoranda, UFSCar · bolsista FAPESP",
     "hero.tagline": "Química que pesquisa como a luz pode conduzir reações químicas, átomo por átomo.",
-    "hero.photoAlt": "Izadora de jaleco no síncrotron Sirius (CNPEM)",
+    "hero.photoAlt": "Izadora",
 
+    "jump.news": "Novidades",
     "jump.about": "Sobre",
     "jump.education": "Formação",
     "jump.research": "Pesquisa",
@@ -101,6 +102,7 @@ export const ui = {
     "jump.participation": "Participação",
     "jump.contact": "Contato",
 
+    "section.news": "Novidades",
     "section.about": "Sobre",
     "section.education": "Formação",
     "section.research": "Pesquisa",
@@ -110,15 +112,15 @@ export const ui = {
     "section.contact": "Contato",
 
     "about.body1":
-      "Izadora trabalha com catálise e química de materiais, com foco em usar luz — em vez de calor — para conduzir reações químicas. Atualmente é pesquisadora de pós-doutorado na UFSCar, bolsista FAPESP, desenvolvendo catalisadores single-atom ancorados em nitretos de carbono.",
+      "Izadora trabalha com catálise e química de materiais, com foco em usar luz — em vez de calor — para conduzir reações químicas. Atualmente é doutoranda na UFSCar, no laboratório do Prof. Ivo F. Teixeira, bolsista FAPESP, desenvolvendo catalisadores single-atom ancorados em nitretos de carbono.",
     "about.body2":
-      "O caminho até aqui passou pela UFMG, uma temporada de pesquisa na Argentina, um ano de intercâmbio no Reino Unido e um doutorado na Shinshu University, no Japão.",
+      "Antes disso, concluiu um doutorado na Shinshu University, no Japão. O caminho até lá passou pela UFMG, uma temporada de pesquisa na Argentina e um ano de intercâmbio no Reino Unido.",
     "about.journeyCta": "Ler a jornada completa",
 
     "research.summary":
       "Nitretos de carbono grafítico como plataformas para fotocatálise single-atom — catalisadores desenhados átomo por átomo para converter luz solar em reações químicas úteis.",
     "research.grantLabel": "Bolsa FAPESP",
-    "research.advisorLabel": "Pesquisador anfitrião",
+    "research.advisorLabel": "Orientador",
     "research.interestsLabel": "Interesses de pesquisa",
 
     "publications.viewAll": "Todas as publicações no ORCID",

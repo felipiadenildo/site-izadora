@@ -9,7 +9,7 @@ const lang = getLangFromUrl(Astro.url);
   {
     participation.map((entry) => (
       <li class="grid grid-cols-[6.5rem_1fr] gap-4 py-3 sm:grid-cols-[8rem_1fr]">
-        <span class="text-sm tabular-nums text-ink-muted">{entry.period}</span>
+        <span class="font-mono text-xs text-ink-muted">{entry.period}</span>
         <div class="text-sm text-ink">
           <span>{entry.title[lang]}</span>
           <span class="text-ink-muted"> — {entry.org}</span>

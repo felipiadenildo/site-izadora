@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import { person } from "../data/person";
+import SocialLinks from "./SocialLinks.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -8,8 +9,9 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-line/70">
-  <div class="mx-auto flex max-w-3xl flex-col-reverse items-start justify-between gap-3 px-4 py-6 text-xs text-ink-muted sm:flex-row sm:items-center sm:px-6">
+  <div class="mx-auto flex max-w-3xl flex-col items-center gap-3 px-4 py-6 text-xs text-ink-muted sm:flex-row sm:justify-between sm:px-6">
     <p>© {year} {person.shortName}. {t("footer.rights")}</p>
+    <SocialLinks />
     <a href="#top" class="hover:text-accent">{t("footer.backToTop")} ↑</a>
   </div>
 </footer>

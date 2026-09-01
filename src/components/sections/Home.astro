@@ -5,83 +5,85 @@ import { person } from "../../data/person";
 import UnderConstruction from "../UnderConstruction.astro";
 import SocialLinks from "../SocialLinks.astro";
 import JumpNav from "../cv/JumpNav.astro";
+import NewsList from "../cv/NewsList.astro";
 import EducationList from "../cv/EducationList.astro";
 import PublicationList from "../cv/PublicationList.astro";
 import ProjectList from "../cv/ProjectList.astro";
 import ParticipationList from "../cv/ParticipationList.astro";
-import labPhoto from "../../assets/photos/izadora-lab-sirius.jpeg";
+import casualPhoto from "../../assets/photos/izadora-casual.jpeg";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
+
+const sectionHeading = "font-mono text-xs font-semibold uppercase tracking-widest text-ink-muted";
+const sectionWrap = "mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6";
 ---
 
 <div id="top">
   {/* ---------- Hero ---------- */}
-  <section class="mx-auto max-w-3xl px-4 pt-10 pb-8 sm:px-6 sm:pt-14">
-    <div class="flex flex-col-reverse items-start gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
-      <div>
-        <p class="text-sm text-ink-muted">{t("hero.location")}</p>
-        <h1 class="mt-1 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-          {person.name}
-        </h1>
-        <p class="mt-2 text-sm text-ink-muted">{t("hero.role")}</p>
-        <p class="mt-4 max-w-md text-base leading-relaxed text-ink">{t("hero.tagline")}</p>
-      </div>
-
-      <Image
-        src={labPhoto}
-        alt={t("hero.photoAlt")}
-        width={320}
-        height={400}
-        loading="eager"
-        class="h-32 w-28 shrink-0 rounded-xl border border-line object-cover sm:h-40 sm:w-32"
-      />
-    </div>
+  <section class="mx-auto max-w-3xl px-4 pt-12 pb-8 sm:px-6 sm:pt-16">
+    <p class="font-mono text-xs uppercase tracking-widest text-ink-muted">{t("hero.location")}</p>
+    <h1 class="mt-2 font-display text-4xl font-medium tracking-tight text-ink sm:text-5xl">
+      {person.name}
+    </h1>
+    <p class="mt-2 font-mono text-xs uppercase tracking-widest text-ink-muted">{t("hero.role")}</p>
+    <p class="mt-5 max-w-lg font-display text-lg italic leading-relaxed text-ink/90">{t("hero.tagline")}</p>
 
     <div class="mt-8 border-t border-line/70 pt-5">
       <JumpNav />
     </div>
   </section>
 
-  {/* ---------- About ---------- */}
-  <section id="about" class="mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6">
-    <h2 class="font-display text-lg font-semibold text-ink">{t("section.about")}</h2>
-    <div class="mt-4 max-w-2xl space-y-3 text-base leading-relaxed text-ink">
-      <p>{t("about.body1")}</p>
-      <p>{t("about.body2")}</p>
+  {/* ---------- News ---------- */}
+  <section id="news" class={sectionWrap}>
+    <h2 class={sectionHeading}>{t("section.news")}</h2>
+    <div class="mt-3">
+      <NewsList />
     </div>
-    <a
-      href={translatePath("/journey/")}
-      class="mt-3 inline-block text-sm font-medium text-accent hover:underline"
-    >
-      {t("about.journeyCta")} →
-    </a>
+  </section>
+
+  {/* ---------- About ---------- */}
+  <section id="about" class={sectionWrap}>
+    <h2 class={sectionHeading}>{t("section.about")}</h2>
+    <div class="mt-4 grid gap-6 sm:grid-cols-[1fr_9rem] sm:items-start">
+      <div class="space-y-3 text-base leading-relaxed text-ink sm:order-1">
+        <p>{t("about.body1")}</p>
+        <p>{t("about.body2")}</p>
+        <a href={translatePath("/journey/")} class="inline-block text-sm font-medium text-accent hover:underline">
+          {t("about.journeyCta")} →
+        </a>
+      </div>
+      <Image
+        src={casualPhoto}
+        alt={person.name}
+        width={280}
+        height={373}
+        loading="eager"
+        class="order-first w-28 shrink-0 rounded-lg border border-line object-cover sm:order-2 sm:w-full"
+      />
+    </div>
   </section>
 
   {/* ---------- Education ---------- */}
-  <section id="education" class="mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6">
-    <h2 class="font-display text-lg font-semibold text-ink">{t("section.education")}</h2>
+  <section id="education" class={sectionWrap}>
+    <h2 class={sectionHeading}>{t("section.education")}</h2>
     <div class="mt-2">
       <EducationList />
     </div>
   </section>
 
   {/* ---------- Research ---------- */}
-  <section id="research" class="mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6">
-    <h2 class="font-display text-lg font-semibold text-ink">{t("section.research")}</h2>
+  <section id="research" class={sectionWrap}>
+    <h2 class={sectionHeading}>{t("section.research")}</h2>
     <p class="mt-4 max-w-2xl text-base leading-relaxed text-ink">{t("research.summary")}</p>
     <p class="mt-3 text-sm text-ink-muted">
       {t("research.grantLabel")}:{" "}
-      <a
-        href={person.grantUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-accent hover:underline"
-      >
+      <a href={person.grantUrl} target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">
         {person.grantNumber}
       </a>
-      {" · "}{t("research.advisorLabel")}: {person.advisor}
+      {" · "}
+      {t("research.advisorLabel")}: {person.advisor}
     </p>
     <p class="mt-2 text-sm text-ink-muted">
       <span class="text-ink">{t("research.interestsLabel")}:</span> {person.researchInterests.join(", ")}
@@ -89,9 +91,9 @@ const translatePath = useTranslatedPath(lang);
   </section>
 
   {/* ---------- Publications ---------- */}
-  <section id="publications" class="mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6">
+  <section id="publications" class={sectionWrap}>
     <div class="flex items-baseline justify-between gap-4">
-      <h2 class="font-display text-lg font-semibold text-ink">{t("section.publications")}</h2>
+      <h2 class={sectionHeading}>{t("section.publications")}</h2>
       <a
         href={person.orcidUrl}
         target="_blank"
@@ -107,24 +109,24 @@ const translatePath = useTranslatedPath(lang);
   </section>
 
   {/* ---------- Projects ---------- */}
-  <section id="projects" class="mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6">
-    <h2 class="font-display text-lg font-semibold text-ink">{t("section.projects")}</h2>
+  <section id="projects" class={sectionWrap}>
+    <h2 class={sectionHeading}>{t("section.projects")}</h2>
     <div class="mt-2">
       <ProjectList />
     </div>
   </section>
 
   {/* ---------- Participation ---------- */}
-  <section id="participation" class="mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6">
-    <h2 class="font-display text-lg font-semibold text-ink">{t("section.participation")}</h2>
+  <section id="participation" class={sectionWrap}>
+    <h2 class={sectionHeading}>{t("section.participation")}</h2>
     <div class="mt-2">
       <ParticipationList />
     </div>
   </section>
 
   {/* ---------- Contact ---------- */}
-  <section id="contact" class="mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6">
-    <h2 class="font-display text-lg font-semibold text-ink">{t("section.contact")}</h2>
+  <section id="contact" class={sectionWrap}>
+    <h2 class={sectionHeading}>{t("section.contact")}</h2>
     <p class="mt-4 max-w-md text-sm text-ink-muted">{t("contact.note")}</p>
     <div class="mt-4">
       <SocialLinks class="-ml-2" />

@@ -5,6 +5,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const items: Array<{ href: string; label: string }> = [
+  { href: "#news", label: t("jump.news") },
   { href: "#about", label: t("jump.about") },
   { href: "#education", label: t("jump.education") },
   { href: "#research", label: t("jump.research") },
