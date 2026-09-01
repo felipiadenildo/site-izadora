@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+import { getLangFromUrl, useTranslations, useTranslatedPath, getBareCurrentPath } from "../i18n/utils";
 import ThemeToggle from "./ThemeToggle.astro";
 import LangToggle from "./LangToggle.astro";
 
@@ -7,7 +7,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
-const bareCurrentPath = Astro.url.pathname.replace(/^\/pt(\/|$)/, "/");
+const bareCurrentPath = getBareCurrentPath(Astro.url);
 
 const navItems: Array<{ href: string; label: string }> = [
   { href: "/", label: t("nav.home") },

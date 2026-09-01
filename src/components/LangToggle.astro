@@ -1,8 +1,8 @@
 ---
-import { getLangFromUrl, useTranslatedPath } from "../i18n/utils";
+import { getLangFromUrl, useTranslatedPath, getBareCurrentPath } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
-const bareCurrentPath = Astro.url.pathname.replace(/^\/pt(\/|$)/, "/");
+const bareCurrentPath = getBareCurrentPath(Astro.url);
 
 const enHref = useTranslatedPath("en")(bareCurrentPath, "en");
 const ptHref = useTranslatedPath("pt")(bareCurrentPath, "pt");

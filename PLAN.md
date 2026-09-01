@@ -156,3 +156,17 @@ Rodada de feedback pontual sobre o resultado da v2. Decisões confirmadas com o 
 **https://felipiadenildo.github.io/site-izadora/**
 
 Repositório público: https://github.com/felipiadenildo/site-izadora. Deploy automático a cada push na `main` via GitHub Actions (`.github/workflows/deploy.yml`). Pendências continuam as mesmas da Fase 6 (e-mail, CV em PDF, revisão de voz pela própria Izadora, domínio próprio se quiserem no futuro).
+
+## v5 — Correções pós-deploy (setembro 2026)
+
+Bug real encontrado pelo usuário no site publicado: os links do header (Home, Jornada, EN/PT) não levavam para `/site-izadora/...` — Home ia para a raiz de `felipiadenildo.github.io` (a página pessoal dele) e Jornada dava 404. Causa: `Astro.url.pathname` já inclui o base path em produção, mas o código de rotas (`getLangFromUrl`, o cálculo de `bareCurrentPath` em `Header.astro`/`LangToggle.astro`) não descontava isso — e por consequência **a detecção de idioma também estava quebrada em produção** (toda página `/pt/*` estava sendo tratada como inglês, só não tinha aparecido porque eu não testei `/pt/` no site publicado, só localmente onde o base é `/`). Corrigido centralizando a lógica em `stripBase()` + `getBareCurrentPath()` em `src/i18n/utils.ts`, usado por `Header.astro` e `LangToggle.astro`; favicon e os links do 404 também foram prefixados com `import.meta.env.BASE_URL`. Verificado via grep no HTML gerado (`dist/`), não só visualmente.
+
+Também: linhas divisórias restantes (`Footer.astro`, hero da Home) removidas — só espaçamento agora.
+
+### Fase 10 — v5 (execução)
+- [x] `useTranslatedPath` prefixado com `import.meta.env.BASE_URL`
+- [x] `getLangFromUrl` e novo `getBareCurrentPath` descontam o base path antes de qualquer lógica de rota
+- [x] Favicon e links do 404 corrigidos para o base path
+- [x] Linhas divisórias restantes removidas (Footer, hero)
+- [x] `astro check` limpo + build com `BASE_PATH=/site-izadora/` verificado via grep no HTML gerado
+- [x] Push + redeploy automático

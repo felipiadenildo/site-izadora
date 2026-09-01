@@ -18,7 +18,7 @@ export const education: EducationEntry[] = [
     degree: { en: "Ph.D. in Chemistry (in progress)", pt: "Doutorado em Química (em andamento)" },
     institution: "UFSCar",
     place: "São Carlos, Brazil",
-    current: true,
+    // current: true,
   },
   {
     period: "2019 – 2023",
