@@ -24,7 +24,7 @@ export const person = {
   currentInstitution: "Universidade Federal de São Carlos (UFSCar)",
   currentInstitutionUrl: "https://www2.ufscar.br/",
   advisor: "Prof. Dr. Ivo Freitas Teixeira",
-  grantNumber: "FAPESP 20/14741-6",
+  grantNumber: "20/14741-6",
   grantUrl:
     "https://bv.fapesp.br/pt/auxilios/108831/nitretos-de-carbono-grafitico-como-plataformas-para-single-atom-fotocatalise-usando-principios-de-de/",
   researchInterests: [

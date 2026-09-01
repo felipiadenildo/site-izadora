@@ -4,211 +4,149 @@ export type Lang = (typeof langs)[number];
 
 export const ui = {
   en: {
-    "site.role": "Chemist — Photocatalysis & Single-Atom Catalysis",
-    "site.underConstruction": "This page is still growing crystals",
+    "site.role": "Chemist — photocatalysis & single-atom catalysis",
 
     "nav.home": "Home",
-    "nav.about": "About",
-    "nav.research": "Research",
-    "nav.publications": "Publications",
-    "nav.projects": "Projects",
-    "nav.contact": "Contact",
     "nav.journey": "Journey",
+    "nav.blog": "Blog",
     "nav.langSwitch": "Português",
     "nav.skipToContent": "Skip to content",
 
-    "hero.eyebrow": "Postdoctoral Researcher, UFSCar (FAPESP fellow)",
-    "hero.tagline": "Chemist turning sunlight into chemical reactions — one single atom at a time.",
-    "hero.subtext":
-      "Izadora studies how single metal atoms anchored on carbon nitrides can drive photocatalysis — using light, instead of heat and harsh reagents, to make chemistry more sustainable.",
-    "hero.ctaResearch": "See the research",
-    "hero.ctaCV": "Download CV",
-    "hero.ctaContact": "Get in touch",
+    "theme.toLight": "Switch to light mode",
+    "theme.toDark": "Switch to dark mode",
+
+    "hero.location": "São Carlos, SP — Brazil",
+    "hero.role": "Postdoctoral researcher, UFSCar — FAPESP fellow",
+    "hero.tagline": "Chemist researching how light can drive chemical reactions, atom by atom.",
     "hero.photoAlt": "Izadora in a lab coat at the Sirius synchrotron facility (CNPEM)",
 
-    "home.highlights": "At a glance",
-    "home.currentRole": "Currently",
-    "home.currentRoleBody":
-      "Postdoctoral researcher at UFSCar, FAPESP fellow, working with Prof. Ivo F. Teixeira on single-atom photocatalysts.",
-    "home.latestPub": "Latest publication",
-    "home.featuredProject": "Featured project",
-    "home.featuredProjectBody":
-      "CataliIza — a tool that turns raw GC-MS chromatography data into something a chemist can actually read without losing a Friday afternoon.",
-    "home.journeyTeaser.title": "Three continents, one periodic table",
-    "home.journeyTeaser.body":
-      "From a technical high school in Minas Gerais to a synchrotron lab in Japan — see how the path unfolded.",
-    "home.journeyTeaser.cta": "Read the journey",
-    "home.snapshotTitle": "In short",
-    "home.readMore": "Read the full story",
-    "home.viewAll": "View all",
+    "jump.about": "About",
+    "jump.education": "Education",
+    "jump.research": "Research",
+    "jump.publications": "Publications",
+    "jump.projects": "Projects",
+    "jump.participation": "Participation",
+    "jump.contact": "Contact",
 
-    "about.title": "About",
-    "about.eyebrow": "The slightly longer version",
-    "about.quickFacts": "Quick facts",
-    "about.factDegree": "Doctor of Engineering, Shinshu University (Japan), 2023",
-    "about.factField": "Field: inorganic & materials chemistry, heterogeneous catalysis",
-    "about.factInstitution": "Universidade Federal de São Carlos (UFSCar)",
-    "about.factOrigin": "Born and (mostly) raised in Minas Gerais, Brazil",
-    "about.funFactTitle": "Fun fact",
-    "about.funFact":
-      "Her doctoral research took her from Belo Horizonte to San Luis, Liverpool and Nagano before bringing her back to Brazil — a PhD with more stamps in the passport than most travel bloggers.",
-    "about.cvTitle": "Curriculum Vitae",
-    "about.cvComingSoon":
-      "The PDF version is still recrystallizing — check back soon, or ask directly via the contact page.",
-    "about.journeyCta": "See the full timeline →",
+    "section.about": "About",
+    "section.education": "Education",
+    "section.research": "Research",
+    "section.publications": "Publications",
+    "section.projects": "Projects",
+    "section.participation": "Participation & recognition",
+    "section.contact": "Contact",
 
-    "journey.title": "Journey",
-    "journey.eyebrow": "How a technical-school student in Minas Gerais ended up doing photocatalysis in Brazil, by way of Argentina, England and Japan",
-    "journey.intro":
-      "Academic careers rarely move in a straight line. This one zig-zagged across three continents and picked up a taste for synchrotron light along the way.",
+    "about.body1":
+      "Izadora works on catalysis and materials chemistry, focused on using light instead of heat to drive chemical reactions. She's currently a postdoctoral researcher at UFSCar, on a FAPESP fellowship, designing single-atom catalysts anchored on carbon nitrides.",
+    "about.body2":
+      "Her path here went through UFMG, a research stay in Argentina, an exchange year in the UK, and a PhD at Shinshu University in Japan.",
+    "about.journeyCta": "Read the full journey",
 
-    "research.title": "Research",
-    "research.eyebrow": "Making light do the heavy lifting",
-    "research.currentProject": "Current project",
-    "research.currentProjectBody":
-      "Graphitic carbon nitrides as platforms for single-atom photocatalysis — designing catalysts atom by atom to convert sunlight into useful chemical transformations, with fewer of the harsh conditions traditional catalysis relies on.",
+    "research.summary":
+      "Graphitic carbon nitrides as platforms for single-atom photocatalysis — designing catalysts atom by atom to convert sunlight into useful chemical reactions.",
     "research.grantLabel": "FAPESP grant",
     "research.advisorLabel": "Host researcher",
-    "research.institutionLabel": "Institution",
-    "research.interestsTitle": "Research interests",
-    "research.methodsTitle": "Methods & tools she reaches for",
-    "research.methodsBody":
-      "Gas adsorption analysis, thermal/kinetic characterization, electron microscopy and synchrotron-based techniques (Sirius/LNLS, CNPEM) — plus the occasional GC-MS chromatogram that needs taming (hence CataliIza).",
+    "research.interestsLabel": "Research interests",
 
-    "publications.title": "Publications",
-    "publications.eyebrow": "Peer-reviewed, mostly about making molecules behave",
-    "publications.viewProfile": "Full list on ORCID",
-    "publications.viewScholar": "Google Scholar profile",
+    "publications.viewAll": "All publications on ORCID",
     "publications.forthcoming": "In press",
+    "publications.openLink": "Open publication",
 
-    "projects.title": "Projects",
-    "projects.eyebrow": "Where chemistry meets code",
     "projects.viewRepo": "View repository",
-    "projects.comingSoonTitle": "A new experiment is brewing",
-    "projects.comingSoonBody":
-      "This flask is still empty — the next project will be poured in here once it's ready to be seen by human eyes.",
+    "projects.nextNote": "Next project isn't public yet.",
 
-    "contact.title": "Contact",
-    "contact.eyebrow": "Say hello, propose a collaboration, or just talk chemistry",
-    "contact.emailTitle": "Email",
-    "contact.profilesTitle": "Academic & professional profiles",
-    "contact.note":
-      "There's no contact form yet (static sites and forms are a whole other reaction pathway) — the academic profiles below are the most reliable way to reach her for now.",
+    "contact.note": "No contact form for now — reach out through one of these.",
+    "contact.emailPending": "Contact email not published yet.",
+    "contact.cvLabel": "CV (PDF)",
+    "contact.cvPending": "Coming soon.",
 
     "footer.rights": "All rights reserved.",
-    "footer.builtWith": "Built with Astro & Tailwind CSS.",
     "footer.backToTop": "Back to top",
 
-    "notfound.title": "404 — Reagent not found",
-    "notfound.body":
-      "Whatever you were looking for didn't survive the reaction. It may have evaporated, or never existed on this bench.",
-    "notfound.cta": "Back to a known compound (home)",
+    "journey.intro":
+      "A research career rarely moves in a straight line. This one went through three countries before landing back in Brazil.",
 
-    "underconstruction.default":
-      "This section is still synthesizing — come back after it's had time to crystallize.",
+    "blog.empty.eyebrow": "Nothing here yet",
+    "blog.empty.body":
+      "No posts published yet. This page is ready for when there's something worth writing about.",
+
+    "notfound.title": "404 — Reagent not found",
+    "notfound.body": "Whatever you were looking for isn't on this bench. It may have moved, or never existed.",
+    "notfound.cta": "Back to home",
+
+    "underconstruction.default": "Still being put together — check back soon.",
   },
   pt: {
-    "site.role": "Química — Fotocatálise e Catálise Single-Atom",
-    "site.underConstruction": "Esta página ainda está crescendo cristais",
+    "site.role": "Química — fotocatálise e catálise single-atom",
 
     "nav.home": "Início",
-    "nav.about": "Sobre",
-    "nav.research": "Pesquisa",
-    "nav.publications": "Publicações",
-    "nav.projects": "Projetos",
-    "nav.contact": "Contato",
     "nav.journey": "Jornada",
+    "nav.blog": "Blog",
     "nav.langSwitch": "English",
     "nav.skipToContent": "Pular para o conteúdo",
 
-    "hero.eyebrow": "Pesquisadora de Pós-Doutorado, UFSCar (bolsista FAPESP)",
-    "hero.tagline": "Química que transforma luz do sol em reação química — um átomo de cada vez.",
-    "hero.subtext":
-      "Izadora estuda como átomos metálicos isolados ancorados em nitretos de carbono podem conduzir reações de fotocatálise — usando luz, em vez de calor e reagentes agressivos, para tornar a química mais sustentável.",
-    "hero.ctaResearch": "Ver a pesquisa",
-    "hero.ctaCV": "Baixar currículo",
-    "hero.ctaContact": "Falar com ela",
+    "theme.toLight": "Mudar para modo claro",
+    "theme.toDark": "Mudar para modo escuro",
+
+    "hero.location": "São Carlos, SP — Brasil",
+    "hero.role": "Pesquisadora de pós-doutorado, UFSCar — bolsista FAPESP",
+    "hero.tagline": "Química que pesquisa como a luz pode conduzir reações químicas, átomo por átomo.",
     "hero.photoAlt": "Izadora de jaleco no síncrotron Sirius (CNPEM)",
 
-    "home.highlights": "Resumo rápido",
-    "home.currentRole": "Atualmente",
-    "home.currentRoleBody":
-      "Pesquisadora de pós-doutorado na UFSCar, bolsista FAPESP, trabalhando com o Prof. Ivo F. Teixeira em fotocatalisadores single-atom.",
-    "home.latestPub": "Publicação mais recente",
-    "home.featuredProject": "Projeto em destaque",
-    "home.featuredProjectBody":
-      "CataliIza — uma ferramenta que transforma dados brutos de cromatografia GC-MS em algo que um químico consegue de fato ler sem perder uma tarde inteira.",
-    "home.journeyTeaser.title": "Três continentes, uma tabela periódica",
-    "home.journeyTeaser.body":
-      "De uma escola técnica em Minas Gerais a um laboratório síncrotron no Japão — veja como o caminho se desenhou.",
-    "home.journeyTeaser.cta": "Ler a jornada",
-    "home.snapshotTitle": "Resumindo",
-    "home.readMore": "Ler a história completa",
-    "home.viewAll": "Ver todas",
+    "jump.about": "Sobre",
+    "jump.education": "Formação",
+    "jump.research": "Pesquisa",
+    "jump.publications": "Publicações",
+    "jump.projects": "Projetos",
+    "jump.participation": "Participação",
+    "jump.contact": "Contato",
 
-    "about.title": "Sobre",
-    "about.eyebrow": "A versão um pouco mais longa",
-    "about.quickFacts": "Fatos rápidos",
-    "about.factDegree": "Doutorado em Engenharia, Shinshu University (Japão), 2023",
-    "about.factField": "Área: química inorgânica e de materiais, catálise heterogênea",
-    "about.factInstitution": "Universidade Federal de São Carlos (UFSCar)",
-    "about.factOrigin": "Nascida e (majoritariamente) criada em Minas Gerais, Brasil",
-    "about.funFactTitle": "Curiosidade",
-    "about.funFact":
-      "O doutorado a levou de Belo Horizonte a San Luis, Liverpool e Nagano antes de trazê-la de volta ao Brasil — um doutorado com mais carimbos no passaporte do que muito blogueiro de viagem.",
-    "about.cvTitle": "Currículo",
-    "about.cvComingSoon":
-      "A versão em PDF ainda está recristalizando — volte em breve, ou pergunte diretamente pela página de contato.",
-    "about.journeyCta": "Ver a linha do tempo completa →",
+    "section.about": "Sobre",
+    "section.education": "Formação",
+    "section.research": "Pesquisa",
+    "section.publications": "Publicações",
+    "section.projects": "Projetos",
+    "section.participation": "Participação & reconhecimento",
+    "section.contact": "Contato",
 
-    "journey.title": "Jornada",
-    "journey.eyebrow": "Como uma estudante de escola técnica em Minas Gerais foi parar na fotocatálise no Brasil, passando por Argentina, Inglaterra e Japão",
-    "journey.intro":
-      "Carreira acadêmica raramente é uma linha reta. Essa aqui fez ziguezague por três continentes e pegou gosto por luz síncrotron no caminho.",
+    "about.body1":
+      "Izadora trabalha com catálise e química de materiais, com foco em usar luz — em vez de calor — para conduzir reações químicas. Atualmente é pesquisadora de pós-doutorado na UFSCar, bolsista FAPESP, desenvolvendo catalisadores single-atom ancorados em nitretos de carbono.",
+    "about.body2":
+      "O caminho até aqui passou pela UFMG, uma temporada de pesquisa na Argentina, um ano de intercâmbio no Reino Unido e um doutorado na Shinshu University, no Japão.",
+    "about.journeyCta": "Ler a jornada completa",
 
-    "research.title": "Pesquisa",
-    "research.eyebrow": "Fazendo a luz puxar o peso pesado",
-    "research.currentProject": "Projeto atual",
-    "research.currentProjectBody":
-      "Nitretos de carbono grafítico como plataformas para fotocatálise single-atom — desenhando catalisadores átomo por átomo para converter luz solar em transformações químicas úteis, com menos das condições agressivas de que a catálise tradicional depende.",
+    "research.summary":
+      "Nitretos de carbono grafítico como plataformas para fotocatálise single-atom — catalisadores desenhados átomo por átomo para converter luz solar em reações químicas úteis.",
     "research.grantLabel": "Bolsa FAPESP",
     "research.advisorLabel": "Pesquisador anfitrião",
-    "research.institutionLabel": "Instituição",
-    "research.interestsTitle": "Interesses de pesquisa",
-    "research.methodsTitle": "Métodos e ferramentas do dia a dia",
-    "research.methodsBody":
-      "Análise de adsorção de gases, caracterização térmica/cinética, microscopia eletrônica e técnicas de luz síncrotron (Sirius/LNLS, CNPEM) — além de, ocasionalmente, domar um cromatograma de GC-MS (daí o CataliIza).",
+    "research.interestsLabel": "Interesses de pesquisa",
 
-    "publications.title": "Publicações",
-    "publications.eyebrow": "Revisadas por pares, majoritariamente sobre fazer moléculas se comportarem",
-    "publications.viewProfile": "Lista completa no ORCID",
-    "publications.viewScholar": "Perfil no Google Scholar",
+    "publications.viewAll": "Todas as publicações no ORCID",
     "publications.forthcoming": "No prelo",
+    "publications.openLink": "Abrir publicação",
 
-    "projects.title": "Projetos",
-    "projects.eyebrow": "Onde a química encontra o código",
     "projects.viewRepo": "Ver repositório",
-    "projects.comingSoonTitle": "Um novo experimento está em preparo",
-    "projects.comingSoonBody":
-      "Este balão ainda está vazio — o próximo projeto será vertido aqui assim que estiver pronto para olhos humanos.",
+    "projects.nextNote": "O próximo projeto ainda não é público.",
 
-    "contact.title": "Contato",
-    "contact.eyebrow": "Diga oi, proponha uma colaboração, ou só bata um papo sobre química",
-    "contact.emailTitle": "E-mail",
-    "contact.profilesTitle": "Perfis acadêmicos e profissionais",
-    "contact.note":
-      "Ainda não há formulário de contato (sites estáticos e formulários são outra rota de reação inteira) — os perfis acadêmicos abaixo são a forma mais confiável de falar com ela por enquanto.",
+    "contact.note": "Sem formulário de contato por enquanto — pode chamar por um destes.",
+    "contact.emailPending": "E-mail de contato ainda não publicado.",
+    "contact.cvLabel": "Currículo (PDF)",
+    "contact.cvPending": "Em breve.",
 
     "footer.rights": "Todos os direitos reservados.",
-    "footer.builtWith": "Feito com Astro & Tailwind CSS.",
     "footer.backToTop": "Voltar ao topo",
 
-    "notfound.title": "404 — Reagente não encontrado",
-    "notfound.body":
-      "O que quer que você procurava não sobreviveu à reação. Pode ter evaporado, ou nunca ter existido nesta bancada.",
-    "notfound.cta": "Voltar a um composto conhecido (início)",
+    "journey.intro":
+      "Uma carreira de pesquisa raramente segue linha reta. Essa passou por três países até voltar para o Brasil.",
 
-    "underconstruction.default":
-      "Esta seção ainda está em síntese — volte depois que ela tiver tempo de cristalizar.",
+    "blog.empty.eyebrow": "Nada por aqui ainda",
+    "blog.empty.body":
+      "Nenhum post publicado ainda. Esta página já está pronta pra quando houver algo que valha a pena escrever.",
+
+    "notfound.title": "404 — Reagente não encontrado",
+    "notfound.body": "O que você procurava não está nesta bancada. Pode ter mudado de lugar, ou nunca ter existido.",
+    "notfound.cta": "Voltar ao início",
+
+    "underconstruction.default": "Ainda em preparo — volte em breve.",
   },
 } as const;

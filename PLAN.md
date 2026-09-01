@@ -65,3 +65,33 @@ Roteiro e checklist do desenvolvimento do site pessoal/acadêmico da Dra. Izador
 - [ ] Enviar CV em PDF (EN/PT) para substituir o placeholder de download
 - [ ] Confirmar afiliação atual e projeto em andamento (dados podem mudar)
 - [ ] Decidir sobre domínio próprio (ver conversa)
+
+---
+
+## v2 — Redesign (setembro 2026)
+
+Pivot pedido pelo usuário: v1 estava densa demais ("muitos elementos diferentes"). Referências usadas: felipiadenildo.github.io (simplicidade, enxuto) e sites.google.com/view/risashinoda (home organizada como currículo, por blocos). Decisões que **substituem** as da v1:
+
+- **Navegação**: header enxuto — `Home · Journey · Blog` + cluster de utilidades (ícones sociais discretos, alternância EN/PT, alternância de tema ☀️/🌙). As antigas páginas About/Research/Publications/Projects/Contact **deixaram de existir como rotas** — viraram seções da Home, cada uma com um `id` âncora, navegáveis por uma linha de "quick-jump" (estilo `Sobre · Formação · Pesquisa · ...`) logo abaixo do hero. Trade-off assumido: perde-se URL própria por assunto, ganha-se leitura corrida em formato currículo.
+- **Home**: hero compacto (local, nome, cargo, uma frase, foto pequena) seguido de blocos no estilo CV — Sobre, Formação, Pesquisa, Publicações, Projetos, Participação & Reconhecimento, Contato — como listas com regra fina entre linhas, sem cards/sombra. "Prêmios" foi renomeado para "Participação & Reconhecimento" por honestidade: não há prêmios formais publicados dela, só atuação/seleções reais (SBQ, ACS, curso CNPEM).
+- **Tema claro/escuro real**: sistema de tokens semânticos (`--color-canvas`, `--color-ink`, `--color-ink-muted`, `--color-accent`, `--color-accent-strong`, `--color-on-accent-strong`, `--color-highlight`, `--color-tint`) com par claro/escuro **contrast-checado (WCAG AA)** para cada combinação — ver comentários em `src/styles/global.css`. Alternância manual (não só `prefers-color-scheme`) via `ThemeToggle.astro`, persistida em `localStorage`, aplicada antes do primeiro paint por um script inline em `<head>` (evita flash de tema errado).
+- **Paleta**: terracota removida (nunca chegou a ser usada). Só petróleo + âmbar como acento, usados com bem mais parcimônia que na v1.
+- **Jornada**: redesenhada como trilha — conector SVG tracejado e curvo entre cada parada (efeito de "caminho de viagem"), ícones de linha desenhados à mão (não emoji, não bandeiras) por tema de cada parada, revelação suave via `IntersectionObserver` ao rolar. A foto com a kufia aparece como uma "polaroid" colada (leve rotação, sombra) só na parada atual — único momento "caderno/adesivo" do site inteiro, deliberadamente.
+- **Blog**: página nova, vazia, mesmo tom de humor discreto.
+- **Redes sociais**: só ORCID, Google Scholar e ResearchGate (confirmados). Não incluí placeholders reservados para LinkedIn/Instagram — perfis não confirmados publicamente, e a segurança venceu a completude. Se ela quiser, é fácil adicionar depois.
+- **Tom de texto**: passei o conteúdo por uma revisão para reduzir metáforas empilhadas e construções "traduzidas" (ex.: cortei o gancho repetido de "carimbo no passaporte", frases tipo "não é X, mas Y"). Mantive humor químico, mas um por vez.
+
+### Fase 7 — Redesign (execução)
+- [x] Sistema de tokens semânticos + tema claro/escuro com toggle manual
+- [x] `ThemeToggle.astro`, `SocialLinks.astro` (ícones próprios, sem logos de terceiros)
+- [x] Header/Footer reconstruídos (nav enxuto)
+- [x] Home reconstruída como currículo (hero compacto + quick-jump + blocos)
+- [x] Novos dados: `src/data/education.ts`, `src/data/participation.ts`
+- [x] Journey redesenhada (trilha SVG, ícones por parada, foto "polaroid", scroll-reveal)
+- [x] Blog (estado vazio, EN/PT)
+- [x] Remoção das páginas antigas (about/research/publications/projects/contact) e componentes órfãos (`Pill.astro`, `SectionHeading.astro`)
+- [x] Passe de naturalização de texto (menos metáfora empilhada, menos "traduções")
+- [x] `astro check` + `npm run build` limpos após o redesign
+- [x] Revisão visual local via browser: Home (claro/escuro), Journey (claro/escuro), Blog, EN + PT
+- [ ] Confirmação visual em viewport mobile real (automação de browser não confirmou o resize — recomendo checar rapidamente no celular ou no DevTools)
+- [ ] Feedback do usuário sobre o resultado (servidor local rodando em `http://localhost:4321`) antes de seguir para polimento fino

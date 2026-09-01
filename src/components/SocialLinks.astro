@@ -1,0 +1,50 @@
+---
+import { person } from "../data/person";
+
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+
+const links = [
+  { label: "ORCID", href: person.orcidUrl, icon: "id" as const },
+  { label: "Google Scholar", href: person.scholarUrl, icon: "cap" as const },
+  { label: "ResearchGate", href: person.researchGateUrl, icon: "network" as const },
+];
+
+const icons: Record<string, string> = {
+  id: '<rect x="3.5" y="4.5" width="17" height="15" rx="2.2"/><circle cx="9" cy="10.3" r="2"/><path d="M6.3 16.2c.5-1.7 1.7-2.6 2.7-2.6s2.2.9 2.7 2.6M14 9.5h4M14 13h4"/>',
+  cap: '<path d="M12 5 3 9.2l9 4.2 9-4.2Z"/><path d="M7 11.3v4c0 1 2.2 2.2 5 2.2s5-1.2 5-2.2v-4"/><path d="M21 9.2v5.6"/>',
+  network:
+    '<circle cx="6" cy="7" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="12" cy="17" r="2"/><path d="M7.7 8.1 10.4 15.3M16.3 8.1 13.6 15.3M8 7h8"/>',
+};
+---
+
+<ul class:list={["flex items-center gap-1", className]}>
+  {
+    links.map((link) => (
+      <li>
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          title={link.label}
+          aria-label={link.label}
+          class="inline-flex h-9 w-9 items-center justify-center rounded-full text-ink-muted transition-colors hover:text-accent"
+        >
+          <svg
+            class="h-[18px] w-[18px]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            set:html={icons[link.icon]}
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>

@@ -1,0 +1,33 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { catalizaProject } from "../../data/person";
+import UnderConstruction from "../UnderConstruction.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<ul class="divide-y divide-line/70">
+  <li class="py-3">
+    <a href={catalizaProject.repoUrl} target="_blank" rel="noopener noreferrer" class="group inline text-sm">
+      <span class="font-medium text-ink group-hover:text-accent">{catalizaProject.name}</span>
+      <svg
+        class="ml-1 inline h-3 w-3 shrink-0 text-ink-muted group-hover:text-accent"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M7 17 17 7M8 7h9v9" />
+      </svg>
+    </a>
+    <p class="text-sm text-ink-muted">{catalizaProject.description[lang]}</p>
+  </li>
+  <li class="py-3">
+    <UnderConstruction message={t("projects.nextNote")} compact />
+  </li>
+</ul>

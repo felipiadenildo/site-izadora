@@ -11,6 +11,18 @@ import { person } from "../data/person";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var theme =
+          stored === "dark" || stored === "light"
+            ? stored
+            : window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
     <title>404 · {person.shortName}</title>
     <meta name="robots" content="noindex" />
   </head>
@@ -18,31 +30,29 @@ import { person } from "../data/person";
     <Header />
     <main class="flex-1">
       <div class="mx-auto flex max-w-2xl flex-col items-center px-4 py-24 text-center sm:px-6">
-        <p class="text-5xl" aria-hidden="true">🧪💥</p>
+        <p class="text-4xl" aria-hidden="true">🧪💥</p>
         <h1 class="mt-6 font-display text-3xl font-semibold text-ink sm:text-4xl">404 — Reagent not found</h1>
-        <p class="mt-4 max-w-md text-base leading-relaxed text-ink-soft">
-          Whatever you were looking for didn't survive the reaction. It may have evaporated, or never existed on
-          this bench.
+        <p class="mt-4 max-w-md text-base leading-relaxed text-ink-muted">
+          Whatever you were looking for isn't on this bench. It may have moved, or never existed.
         </p>
         <a
           href="/"
-          class="mt-8 rounded-full bg-petrol-900 px-5 py-2.5 text-sm font-medium text-paper shadow-soft hover:-translate-y-0.5 transition-transform"
+          class="mt-8 rounded-full bg-accent-strong px-5 py-2.5 text-sm font-medium text-on-accent-strong transition-transform hover:-translate-y-0.5"
         >
-          Back to a known compound (home)
+          Back to home
         </a>
 
         <hr class="my-10 w-16 border-line" />
 
         <h2 class="font-display text-xl font-semibold text-ink">404 — Reagente não encontrado</h2>
-        <p class="mt-3 max-w-md text-sm leading-relaxed text-ink-soft">
-          O que quer que você procurava não sobreviveu à reação. Pode ter evaporado, ou nunca ter existido nesta
-          bancada.
+        <p class="mt-3 max-w-md text-sm leading-relaxed text-ink-muted">
+          O que você procurava não está nesta bancada. Pode ter mudado de lugar, ou nunca ter existido.
         </p>
         <a
           href="/pt/"
-          class="mt-6 rounded-full border border-line px-5 py-2 text-sm font-medium text-ink hover:border-petrol-700 hover:text-petrol-900"
+          class="mt-6 rounded-full border border-line px-5 py-2 text-sm font-medium text-ink hover:border-accent hover:text-accent"
         >
-          Voltar a um composto conhecido (início)
+          Voltar ao início
         </a>
       </div>
     </main>

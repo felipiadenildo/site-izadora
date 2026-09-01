@@ -1,0 +1,29 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const items: Array<{ href: string; label: string }> = [
+  { href: "#about", label: t("jump.about") },
+  { href: "#education", label: t("jump.education") },
+  { href: "#research", label: t("jump.research") },
+  { href: "#publications", label: t("jump.publications") },
+  { href: "#projects", label: t("jump.projects") },
+  { href: "#participation", label: t("jump.participation") },
+  { href: "#contact", label: t("jump.contact") },
+];
+---
+
+<nav aria-label="Sections" class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink-muted">
+  {
+    items.map((item, i) => (
+      <>
+        {i > 0 && <span aria-hidden="true">·</span>}
+        <a href={item.href} class="transition-colors hover:text-accent">
+          {item.label}
+        </a>
+      </>
+    ))
+  }
+</nav>

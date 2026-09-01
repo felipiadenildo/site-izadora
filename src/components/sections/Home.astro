@@ -1,120 +1,137 @@
 ---
 import { Image } from "astro:assets";
 import { getLangFromUrl, useTranslations, useTranslatedPath } from "../../i18n/utils";
-import { person, catalizaProject } from "../../data/person";
-import { publications } from "../../data/publications";
-import Pill from "../Pill.astro";
+import { person } from "../../data/person";
+import UnderConstruction from "../UnderConstruction.astro";
+import SocialLinks from "../SocialLinks.astro";
+import JumpNav from "../cv/JumpNav.astro";
+import EducationList from "../cv/EducationList.astro";
+import PublicationList from "../cv/PublicationList.astro";
+import ProjectList from "../cv/ProjectList.astro";
+import ParticipationList from "../cv/ParticipationList.astro";
 import labPhoto from "../../assets/photos/izadora-lab-sirius.jpeg";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
-const latestPub = publications[0];
 ---
 
 <div id="top">
-  <section class="mx-auto max-w-5xl px-4 pt-10 pb-16 sm:px-6 sm:pt-16 sm:pb-24">
-    <div class="grid items-center gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-12">
+  {/* ---------- Hero ---------- */}
+  <section class="mx-auto max-w-3xl px-4 pt-10 pb-8 sm:px-6 sm:pt-14">
+    <div class="flex flex-col-reverse items-start gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
       <div>
-        <p class="font-medium text-sm tracking-wide text-amber-600 uppercase">{t("hero.eyebrow")}</p>
-        <h1 class="mt-3 font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+        <p class="text-sm text-ink-muted">{t("hero.location")}</p>
+        <h1 class="mt-1 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
           {person.name}
         </h1>
-        <p class="mt-5 font-display text-xl italic text-petrol-800 sm:text-2xl">{t("hero.tagline")}</p>
-        <p class="mt-4 max-w-xl text-base leading-relaxed text-ink-soft">{t("hero.subtext")}</p>
-
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a
-            href={translatePath("/research/")}
-            class="rounded-full bg-petrol-900 px-5 py-2.5 text-sm font-medium text-paper shadow-soft transition-transform hover:-translate-y-0.5"
-          >
-            {t("hero.ctaResearch")}
-          </a>
-          <a
-            href={translatePath("/about/") + "#cv"}
-            class="rounded-full border border-line px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-petrol-700 hover:text-petrol-900"
-          >
-            {t("hero.ctaCV")}
-          </a>
-          <a
-            href={translatePath("/contact/")}
-            class="rounded-full px-5 py-2.5 text-sm font-medium text-ink-soft underline decoration-line underline-offset-4 hover:text-petrol-900 hover:decoration-amber-500"
-          >
-            {t("hero.ctaContact")}
-          </a>
-        </div>
+        <p class="mt-2 text-sm text-ink-muted">{t("hero.role")}</p>
+        <p class="mt-4 max-w-md text-base leading-relaxed text-ink">{t("hero.tagline")}</p>
       </div>
 
-      <div class="relative mx-auto w-full max-w-xs md:max-w-none">
-        <div class="absolute -inset-3 -z-10 rotate-2 rounded-[2rem] bg-amber-100/70 sm:-inset-4"></div>
-        <Image
-          src={labPhoto}
-          alt={t("hero.photoAlt")}
-          width={640}
-          height={800}
-          class="w-full rounded-[1.75rem] border border-line/70 object-cover shadow-soft"
-          loading="eager"
-        />
-      </div>
+      <Image
+        src={labPhoto}
+        alt={t("hero.photoAlt")}
+        width={320}
+        height={400}
+        loading="eager"
+        class="h-32 w-28 shrink-0 rounded-xl border border-line object-cover sm:h-40 sm:w-32"
+      />
+    </div>
+
+    <div class="mt-8 border-t border-line/70 pt-5">
+      <JumpNav />
     </div>
   </section>
 
-  <section class="border-t border-line/70 bg-paper-dim/60">
-    <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6">
-      <h2 class="font-display text-xl font-semibold text-ink">{t("home.highlights")}</h2>
-      <div class="mt-6 grid gap-4 sm:grid-cols-3">
-        <div class="rounded-2xl border border-line/70 bg-paper p-5 shadow-soft">
-          <p class="text-xs font-medium uppercase tracking-wide text-ink-soft">{t("home.currentRole")}</p>
-          <p class="mt-2 text-sm leading-relaxed text-ink">{t("home.currentRoleBody")}</p>
-        </div>
-
-        <a
-          href={translatePath("/publications/")}
-          class="group rounded-2xl border border-line/70 bg-paper p-5 shadow-soft transition-colors hover:border-petrol-700"
-        >
-          <p class="text-xs font-medium uppercase tracking-wide text-ink-soft">{t("home.latestPub")}</p>
-          <p class="mt-2 text-sm leading-relaxed text-ink group-hover:text-petrol-900">
-            {latestPub.title}
-          </p>
-          <p class="mt-2 text-xs text-ink-soft">{latestPub.journal} · {latestPub.year}</p>
-        </a>
-
-        <a
-          href={catalizaProject.repoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group rounded-2xl border border-line/70 bg-paper p-5 shadow-soft transition-colors hover:border-petrol-700"
-        >
-          <p class="text-xs font-medium uppercase tracking-wide text-ink-soft">{t("home.featuredProject")}</p>
-          <p class="mt-2 font-display text-base font-semibold text-ink group-hover:text-petrol-900">
-            {catalizaProject.name}
-          </p>
-          <p class="mt-2 text-sm leading-relaxed text-ink-soft">{catalizaProject.description[lang]}</p>
-        </a>
-      </div>
+  {/* ---------- About ---------- */}
+  <section id="about" class="mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6">
+    <h2 class="font-display text-lg font-semibold text-ink">{t("section.about")}</h2>
+    <div class="mt-4 max-w-2xl space-y-3 text-base leading-relaxed text-ink">
+      <p>{t("about.body1")}</p>
+      <p>{t("about.body2")}</p>
     </div>
-  </section>
-
-  <section class="mx-auto max-w-5xl px-4 py-14 sm:px-6">
     <a
       href={translatePath("/journey/")}
-      class="group flex flex-col gap-4 rounded-2xl border border-line/70 bg-gradient-to-br from-petrol-900 to-petrol-800 p-6 text-paper shadow-soft transition-transform hover:-translate-y-0.5 sm:flex-row sm:items-center sm:justify-between sm:p-8"
+      class="mt-3 inline-block text-sm font-medium text-accent hover:underline"
     >
-      <div>
-        <h2 class="font-display text-xl font-semibold sm:text-2xl">{t("home.journeyTeaser.title")}</h2>
-        <p class="mt-2 max-w-xl text-sm leading-relaxed text-paper/80 sm:text-base">
-          {t("home.journeyTeaser.body")}
-        </p>
-      </div>
-      <span class="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-amber-500 px-4 py-2 text-sm font-medium text-petrol-950 transition-transform group-hover:translate-x-1">
-        {t("home.journeyTeaser.cta")} →
-      </span>
+      {t("about.journeyCta")} →
     </a>
   </section>
 
-  <section class="mx-auto max-w-5xl px-4 pb-20 sm:px-6">
-    <div class="flex flex-wrap gap-2">
-      {person.researchInterests.map((topic) => <Pill tone="petrol">{topic}</Pill>)}
+  {/* ---------- Education ---------- */}
+  <section id="education" class="mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6">
+    <h2 class="font-display text-lg font-semibold text-ink">{t("section.education")}</h2>
+    <div class="mt-2">
+      <EducationList />
+    </div>
+  </section>
+
+  {/* ---------- Research ---------- */}
+  <section id="research" class="mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6">
+    <h2 class="font-display text-lg font-semibold text-ink">{t("section.research")}</h2>
+    <p class="mt-4 max-w-2xl text-base leading-relaxed text-ink">{t("research.summary")}</p>
+    <p class="mt-3 text-sm text-ink-muted">
+      {t("research.grantLabel")}:{" "}
+      <a
+        href={person.grantUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-accent hover:underline"
+      >
+        {person.grantNumber}
+      </a>
+      {" · "}{t("research.advisorLabel")}: {person.advisor}
+    </p>
+    <p class="mt-2 text-sm text-ink-muted">
+      <span class="text-ink">{t("research.interestsLabel")}:</span> {person.researchInterests.join(", ")}
+    </p>
+  </section>
+
+  {/* ---------- Publications ---------- */}
+  <section id="publications" class="mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6">
+    <div class="flex items-baseline justify-between gap-4">
+      <h2 class="font-display text-lg font-semibold text-ink">{t("section.publications")}</h2>
+      <a
+        href={person.orcidUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="shrink-0 text-sm text-accent hover:underline"
+      >
+        {t("publications.viewAll")}
+      </a>
+    </div>
+    <div class="mt-2">
+      <PublicationList />
+    </div>
+  </section>
+
+  {/* ---------- Projects ---------- */}
+  <section id="projects" class="mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6">
+    <h2 class="font-display text-lg font-semibold text-ink">{t("section.projects")}</h2>
+    <div class="mt-2">
+      <ProjectList />
+    </div>
+  </section>
+
+  {/* ---------- Participation ---------- */}
+  <section id="participation" class="mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6">
+    <h2 class="font-display text-lg font-semibold text-ink">{t("section.participation")}</h2>
+    <div class="mt-2">
+      <ParticipationList />
+    </div>
+  </section>
+
+  {/* ---------- Contact ---------- */}
+  <section id="contact" class="mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6">
+    <h2 class="font-display text-lg font-semibold text-ink">{t("section.contact")}</h2>
+    <p class="mt-4 max-w-md text-sm text-ink-muted">{t("contact.note")}</p>
+    <div class="mt-4">
+      <SocialLinks class="-ml-2" />
+    </div>
+    <div class="mt-4 flex flex-col gap-2 sm:max-w-sm">
+      <UnderConstruction message={t("contact.emailPending")} compact />
+      <UnderConstruction message={`${t("contact.cvLabel")} — ${t("contact.cvPending")}`} compact />
     </div>
   </section>
 </div>

@@ -1,38 +1,33 @@
 ---
 import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
 import { person } from "../data/person";
+import ThemeToggle from "./ThemeToggle.astro";
+import SocialLinks from "./SocialLinks.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
-// Strip the /pt prefix (if any) to get the "canonical" path used for both languages.
 const bareCurrentPath = Astro.url.pathname.replace(/^\/pt(\/|$)/, "/");
 
 const navItems: Array<{ href: string; label: string }> = [
   { href: "/", label: t("nav.home") },
-  { href: "/about/", label: t("nav.about") },
-  { href: "/research/", label: t("nav.research") },
-  { href: "/publications/", label: t("nav.publications") },
-  { href: "/projects/", label: t("nav.projects") },
-  { href: "/contact/", label: t("nav.contact") },
+  { href: "/journey/", label: t("nav.journey") },
+  { href: "/blog/", label: t("nav.blog") },
 ];
 
 const otherLang = lang === "en" ? "pt" : "en";
 const langSwitchHref = useTranslatedPath(otherLang)(bareCurrentPath, otherLang);
 ---
 
-<header class="sticky top-0 z-40 border-b border-line/70 bg-paper/85 backdrop-blur">
-  <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-    <a href={translatePath("/")} class="group flex items-baseline gap-2 shrink-0">
-      <span class="font-display text-lg font-semibold tracking-tight text-petrol-900"
-        >{person.shortName}</span
-      >
-      <span class="hidden text-xs text-ink-soft sm:inline">{t("site.role")}</span>
+<header class="sticky top-0 z-40 border-b border-line/70 bg-canvas/90 backdrop-blur">
+  <div class="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <a href={translatePath("/")} class="font-display text-base font-semibold tracking-tight text-ink">
+      {person.shortName}
     </a>
 
-    <nav aria-label="Primary" class="hidden md:block">
-      <ul class="flex items-center gap-1 text-sm">
+    <nav aria-label="Primary" class="hidden sm:block">
+      <ul class="flex items-center gap-5 text-sm text-ink-muted">
         {
           navItems.map((item) => {
             const isCurrent = bareCurrentPath === item.href;
@@ -41,12 +36,7 @@ const langSwitchHref = useTranslatedPath(otherLang)(bareCurrentPath, otherLang);
                 <a
                   href={translatePath(item.href)}
                   aria-current={isCurrent ? "page" : undefined}
-                  class:list={[
-                    "rounded-full px-3 py-1.5 transition-colors",
-                    isCurrent
-                      ? "bg-petrol-900 text-paper"
-                      : "text-ink-soft hover:bg-petrol-900/8 hover:text-petrol-900",
-                  ]}
+                  class:list={["transition-colors hover:text-accent", isCurrent && "text-ink font-medium"]}
                 >
                   {item.label}
                 </a>
@@ -57,30 +47,32 @@ const langSwitchHref = useTranslatedPath(otherLang)(bareCurrentPath, otherLang);
       </ul>
     </nav>
 
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-3">
+      <SocialLinks class="hidden md:flex" />
       <a
         href={langSwitchHref}
-        class="rounded-full border border-line px-3 py-1.5 text-sm text-ink-soft transition-colors hover:border-petrol-700 hover:text-petrol-900"
+        class="text-sm text-ink-muted transition-colors hover:text-accent"
       >
         {t("nav.langSwitch")}
       </a>
+      <ThemeToggle labelLight={t("theme.toLight")} labelDark={t("theme.toDark")} />
       <button
         id="mobile-menu-toggle"
         type="button"
         aria-expanded="false"
         aria-controls="mobile-menu"
-        class="inline-flex items-center justify-center rounded-full border border-line p-2 text-ink md:hidden"
+        class="inline-flex items-center justify-center rounded-full border border-line p-2 text-ink sm:hidden"
       >
         <span class="sr-only">Menu</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <path d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
   </div>
 
-  <nav id="mobile-menu" aria-label="Primary mobile" hidden class="border-t border-line/70 md:hidden">
-    <ul class="mx-auto flex max-w-5xl flex-col px-4 py-2 text-sm">
+  <nav id="mobile-menu" aria-label="Primary mobile" hidden class="border-t border-line/70 sm:hidden">
+    <ul class="mx-auto flex max-w-3xl flex-col px-4 py-2 text-sm">
       {
         navItems.map((item) => {
           const isCurrent = bareCurrentPath === item.href;
@@ -89,10 +81,7 @@ const langSwitchHref = useTranslatedPath(otherLang)(bareCurrentPath, otherLang);
               <a
                 href={translatePath(item.href)}
                 aria-current={isCurrent ? "page" : undefined}
-                class:list={[
-                  "block rounded-md px-2 py-2.5",
-                  isCurrent ? "font-medium text-petrol-900" : "text-ink-soft",
-                ]}
+                class:list={["block rounded-md px-2 py-2.5", isCurrent ? "font-medium text-ink" : "text-ink-muted"]}
               >
                 {item.label}
               </a>
@@ -100,6 +89,9 @@ const langSwitchHref = useTranslatedPath(otherLang)(bareCurrentPath, otherLang);
           );
         })
       }
+      <li class="px-2 pt-1.5">
+        <SocialLinks class="justify-start" />
+      </li>
     </ul>
   </nav>
 </header>

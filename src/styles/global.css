@@ -5,50 +5,60 @@
 @import "@fontsource-variable/fraunces/standard-italic.css";
 @import "@fontsource-variable/inter";
 
-:root {
-  color-scheme: light;
-}
-
+/*
+ * Semantic color system. Every component references ONE of these roles —
+ * never a raw palette shade — so light/dark only ever needs to be tuned in
+ * one place. Each pairing below is contrast-checked (WCAG AA) in both
+ * themes; see the token comments for the ratios.
+ */
 @theme {
   --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
 
-  /* Paper / ink — warm, not clinical white-on-black. */
-  --color-paper: #faf6ef;
-  --color-paper-dim: #f2ece0;
-  --color-ink: #211f1c;
-  --color-ink-soft: #56514a;
+  --color-canvas: #faf6ef; /* page background */
+  --color-canvas-subtle: #f2ece0; /* rare secondary surface (placeholder box) */
+  --color-ink: #211f1c; /* body text — 15.3:1 on canvas */
+  --color-ink-muted: #5c564c; /* secondary text — 6.7:1 on canvas */
+  --color-line: #e4dbc9; /* hairline borders/rules */
 
-  /* Primary — deep petrol/teal, "lab coat at dusk". Serious without being corporate blue. */
-  --color-petrol-950: #0a2b29;
-  --color-petrol-900: #0e3835;
-  --color-petrol-800: #144a45;
-  --color-petrol-700: #1b5c56;
-  --color-petrol-600: #237370;
-  --color-petrol-500: #2f8c87;
-
-  /* Accent — warm amber, like a Bunsen flame. Used sparingly: links, highlights, playful bits. */
-  --color-amber-600: #b9741f;
-  --color-amber-500: #d98e3b;
-  --color-amber-400: #e8a94f;
-  --color-amber-100: #fbe9cf;
-
-  /* Secondary accent — muted terracotta, echoes her red sweater in the photos. */
-  --color-terracotta-600: #a8503f;
-  --color-terracotta-500: #c1594a;
-  --color-terracotta-100: #f6e1db;
-
-  --color-line: #e4dbc9;
+  --color-accent: #144a45; /* links, small accents — 9.3:1 on canvas */
+  --color-accent-strong: #0e3835; /* filled buttons */
+  --color-on-accent-strong: #faf6ef; /* text on filled buttons — 11.9:1 */
+  --color-highlight: #9c5f18; /* eyebrows / small-caps labels — 4.8:1 on canvas */
+  --color-tint: #fbe9cf; /* placeholder-box fill */
+  --color-tint-border: #d98e3b; /* placeholder-box border, focus ring */
 
   --shadow-soft: 0 1px 2px rgb(33 31 28 / 0.04), 0 8px 24px -12px rgb(33 31 28 / 0.18);
 }
 
-/* v1 ships a single, deliberately-tuned light palette (see PLAN.md — dark
-   mode is a real future enhancement, not a media-query afterthought: every
-   semantic color use, not just paper/ink, needs a legible dark counterpart). */
+/*
+ * Dark theme: a real second pass, not an inversion filter. Overrides the
+ * same tokens above so every component stays legible without extra classes.
+ * Toggled via [data-theme] on <html>, set by an inline pre-paint script
+ * (see BaseLayout) to avoid a flash of the wrong theme.
+ */
+:root[data-theme="dark"] {
+  --color-canvas: #101815;
+  --color-canvas-subtle: #17211d;
+  --color-ink: #f1ece1; /* 15.3:1 on canvas */
+  --color-ink-muted: #a9a094; /* 7.0:1 on canvas */
+  --color-line: #2b352f;
+
+  --color-accent: #e8a94f; /* 8.8:1 on canvas */
+  --color-accent-strong: #2f8c87;
+  --color-on-accent-strong: #061412; /* 4.7:1 on accent-strong */
+  --color-highlight: #f0c47f; /* 11.1:1 on canvas */
+  --color-tint: #211a10;
+  --color-tint-border: #d98e3b;
+}
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -64,17 +74,29 @@ html {
 }
 
 body {
-  background-color: var(--color-paper);
+  background-color: var(--color-canvas);
   color: var(--color-ink);
   font-family: var(--font-sans);
 }
 
 ::selection {
-  background-color: var(--color-amber-100);
-  color: var(--color-petrol-950);
+  background-color: var(--color-tint-border);
+  color: var(--color-on-accent-strong);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-amber-500);
+  outline: 2px solid var(--color-tint-border);
   outline-offset: 2px;
+}
+
+/* Theme toggle icon swap — pure CSS, keyed off the pre-paint script's
+   [data-theme] attribute, so there is no icon flash on load. */
+.theme-icon-sun {
+  display: none;
+}
+:root[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}
+:root[data-theme="dark"] .theme-icon-moon {
+  display: none;
 }
