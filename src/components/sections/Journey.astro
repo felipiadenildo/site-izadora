@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { timeline } from "../../data/timeline";
+import { person } from "../../data/person";
+import SectionHeading from "../SectionHeading.astro";
+import kufiaPhoto from "../../assets/photos/izadora-kufia.jpeg";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
+  <div class="grid gap-10 md:grid-cols-[1.3fr_0.7fr] md:items-end">
+    <SectionHeading eyebrow={t("nav.journey")} title={t("journey.title")} subtitle={t("journey.eyebrow")} />
+    <Image
+      src={kufiaPhoto}
+      alt={person.name}
+      width={420}
+      height={420}
+      loading="eager"
+      class="ml-auto hidden aspect-square w-40 rounded-full border border-line/70 object-cover shadow-soft sm:block"
+    />
+  </div>
+
+  <p class="mt-6 max-w-2xl text-base leading-relaxed text-ink-soft">{t("journey.intro")}</p>
+
+  <ol class="mt-12 space-y-10 border-l border-line/80 pl-6 sm:pl-8">
+    {
+      timeline.map((entry) => (
+        <li class="relative">
+          <span
+            class="absolute -left-[calc(1.5rem+9px)] top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-paper bg-amber-500 sm:-left-[calc(2rem+9px)]"
+            aria-hidden="true"
+          />
+          <p class="text-xs font-medium uppercase tracking-wide text-amber-600">
+            {entry.period} · {entry.place}
+          </p>
+          <h2 class="mt-1 font-display text-lg font-semibold text-ink">
+            <span class="mr-1.5" aria-hidden="true">{entry.icon}</span>
+            {entry.title[lang]}
+          </h2>
+          <p class="mt-1.5 max-w-2xl text-sm leading-relaxed text-ink-soft">{entry.body[lang]}</p>
+        </li>
+      ))
+    }
+  </ol>
+</div>

@@ -1,0 +1,17 @@
+---
+interface Props {
+  tone?: "petrol" | "amber" | "terracotta" | "neutral";
+}
+const { tone = "neutral" } = Astro.props;
+
+const toneClasses: Record<string, string> = {
+  petrol: "bg-petrol-900/8 text-petrol-800 border-petrol-900/15",
+  amber: "bg-amber-100 text-amber-600 border-amber-500/25",
+  terracotta: "bg-terracotta-100 text-terracotta-600 border-terracotta-500/20",
+  neutral: "bg-paper-dim text-ink-soft border-line",
+};
+---
+
+<span class:list={["inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium", toneClasses[tone]]}>
+  <slot />
+</span>

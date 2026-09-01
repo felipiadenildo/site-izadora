@@ -1,0 +1,53 @@
+---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+import { person } from "../data/person";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+const year = new Date().getFullYear();
+
+const links = [
+  { label: "ORCID", href: person.orcidUrl },
+  { label: "Google Scholar", href: person.scholarUrl },
+  { label: "ResearchGate", href: person.researchGateUrl },
+  { label: "FAPESP", href: person.fapespUrl },
+];
+---
+
+<footer class="border-t border-line/70">
+  <div class="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+      <div>
+        <a href={translatePath("/")} class="font-display text-base font-semibold text-petrol-900">
+          {person.name}
+        </a>
+        <p class="mt-1 max-w-sm text-sm text-ink-soft">{t("site.role")}</p>
+      </div>
+
+      <nav aria-label="Academic profiles">
+        <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+          {
+            links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-ink-soft underline decoration-line underline-offset-4 transition-colors hover:text-petrol-900 hover:decoration-amber-500"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <div class="mt-8 flex flex-col-reverse items-start justify-between gap-3 border-t border-line/70 pt-4 text-xs text-ink-soft sm:flex-row sm:items-center">
+      <p>© {year} {person.shortName}. {t("footer.rights")}</p>
+      <a href="#top" class="hover:text-petrol-900">{t("footer.backToTop")} ↑</a>
+    </div>
+  </div>
+</footer>

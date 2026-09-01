@@ -1,0 +1,48 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { person } from "../../data/person";
+import SectionHeading from "../SectionHeading.astro";
+import Pill from "../Pill.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
+  <SectionHeading eyebrow={t("research.eyebrow")} title={t("research.title")} />
+
+  <div class="mt-10 rounded-2xl border border-line/70 bg-paper-dim/60 p-6 sm:p-8">
+    <p class="text-xs font-medium uppercase tracking-wide text-ink-soft">{t("research.currentProject")}</p>
+    <p class="mt-3 max-w-2xl text-base leading-relaxed text-ink">{t("research.currentProjectBody")}</p>
+    <dl class="mt-6 grid gap-4 text-sm sm:grid-cols-3">
+      <div>
+        <dt class="text-ink-soft">{t("research.grantLabel")}</dt>
+        <dd class="mt-1">
+          <a href={person.grantUrl} target="_blank" rel="noopener noreferrer" class="font-medium text-petrol-800 underline decoration-line underline-offset-4 hover:text-petrol-900 hover:decoration-amber-500">
+            {person.grantNumber}
+          </a>
+        </dd>
+      </div>
+      <div>
+        <dt class="text-ink-soft">{t("research.advisorLabel")}</dt>
+        <dd class="mt-1 font-medium text-ink">{person.advisor}</dd>
+      </div>
+      <div>
+        <dt class="text-ink-soft">{t("research.institutionLabel")}</dt>
+        <dd class="mt-1 font-medium text-ink">{person.currentInstitution}</dd>
+      </div>
+    </dl>
+  </div>
+
+  <div class="mt-12">
+    <h2 class="font-display text-lg font-semibold text-ink">{t("research.interestsTitle")}</h2>
+    <div class="mt-4 flex flex-wrap gap-2">
+      {person.researchInterests.map((topic) => <Pill tone="petrol">{topic}</Pill>)}
+    </div>
+  </div>
+
+  <div class="mt-12 max-w-2xl">
+    <h2 class="font-display text-lg font-semibold text-ink">{t("research.methodsTitle")}</h2>
+    <p class="mt-3 text-sm leading-relaxed text-ink-soft">{t("research.methodsBody")}</p>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { person } from "../../data/person";
+import { publications } from "../../data/publications";
+import SectionHeading from "../SectionHeading.astro";
+import Pill from "../Pill.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
+  <SectionHeading eyebrow={t("publications.eyebrow")} title={t("publications.title")} />
+
+  <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+    <a href={person.orcidUrl} target="_blank" rel="noopener noreferrer" class="font-medium text-petrol-800 underline decoration-line underline-offset-4 hover:text-petrol-900 hover:decoration-amber-500">
+      {t("publications.viewProfile")}
+    </a>
+    <a href={person.scholarUrl} target="_blank" rel="noopener noreferrer" class="font-medium text-petrol-800 underline decoration-line underline-offset-4 hover:text-petrol-900 hover:decoration-amber-500">
+      {t("publications.viewScholar")}
+    </a>
+  </div>
+
+  <ol class="mt-10 space-y-6">
+    {
+      publications.map((pub) => (
+        <li class="rounded-2xl border border-line/70 bg-paper p-5 shadow-soft sm:p-6">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-display text-sm font-semibold text-petrol-800">{pub.year}</span>
+            {pub.forthcoming && <Pill tone="amber">{t("publications.forthcoming")}</Pill>}
+          </div>
+          <h2 class="mt-2 text-base font-medium leading-snug text-ink">
+            <a
+              href={`https://doi.org/${pub.doi}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-petrol-900 hover:underline"
+            >
+              {pub.title}
+            </a>
+          </h2>
+          <p class="mt-2 text-sm italic text-ink-soft">{pub.journal}</p>
+        </li>
+      ))
+    }
+  </ol>
+</div>
