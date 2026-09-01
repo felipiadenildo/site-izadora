@@ -17,18 +17,18 @@ const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 
 const sectionHeading = "font-mono text-xs font-semibold uppercase tracking-widest text-ink-muted";
-const sectionWrap = "mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4 py-8 sm:px-6";
+const sectionWrap = "mx-auto max-w-3xl scroll-mt-20 px-4 py-9 sm:px-6";
 ---
 
 <div id="top">
   {/* ---------- Hero ---------- */}
   <section class="mx-auto max-w-3xl px-4 pt-12 pb-8 sm:px-6 sm:pt-16">
     <p class="font-mono text-xs uppercase tracking-widest text-ink-muted">{t("hero.location")}</p>
-    <h1 class="mt-2 font-display text-4xl font-medium tracking-tight text-ink sm:text-5xl">
+    <h1 class="mt-2 font-display text-4xl font-medium tracking-tight text-ink md:whitespace-nowrap">
       {person.name}
     </h1>
     <p class="mt-2 font-mono text-xs uppercase tracking-widest text-ink-muted">{t("hero.role")}</p>
-    <p class="mt-5 max-w-lg font-display text-lg italic leading-relaxed text-ink/90">{t("hero.tagline")}</p>
+    <p class="mt-5 font-display text-lg italic leading-relaxed text-ink/90 md:whitespace-nowrap">{t("hero.tagline")}</p>
 
     <div class="mt-8 border-t border-line/70 pt-5">
       <JumpNav />
@@ -133,7 +133,7 @@ const sectionWrap = "mx-auto max-w-3xl scroll-mt-20 border-t border-line/70 px-4
     </div>
     <div class="mt-4 flex flex-col gap-2 sm:max-w-sm">
       <UnderConstruction message={t("contact.emailPending")} compact />
-      <UnderConstruction message={`${t("contact.cvLabel")} — ${t("contact.cvPending")}`} compact />
+      <UnderConstruction message={`${t("contact.cvLabel")}: ${t("contact.cvPending")}`} compact />
     </div>
   </section>
 </div>

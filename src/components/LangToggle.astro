@@ -8,7 +8,7 @@ const enHref = useTranslatedPath("en")(bareCurrentPath, "en");
 const ptHref = useTranslatedPath("pt")(bareCurrentPath, "pt");
 ---
 
-<div class="inline-flex items-center rounded-md border border-line p-0.5 font-mono text-xs tracking-wide" role="group" aria-label="Language">
+<div class="inline-flex items-center rounded-md p-0.5 font-mono text-xs tracking-wide" role="group" aria-label="Language">
   <a
     href={enHref}
     aria-current={lang === "en" ? "page" : undefined}

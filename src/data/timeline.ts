@@ -26,8 +26,8 @@ export const timeline: TimelineEntry[] = [
     icon: "notebook",
     title: { en: "Technical diploma in Chemistry", pt: "Técnico em Química" },
     body: {
-      en: "CEFET-MG — where the periodic table stopped being homework and became interesting.",
-      pt: "CEFET-MG — onde a tabela periódica deixou de ser lição de casa e passou a ser interessante.",
+      en: "CEFET-MG, where the periodic table stopped being homework and became interesting.",
+      pt: "CEFET-MG, onde a tabela periódica deixou de ser lição de casa e passou a ser interessante.",
     },
   },
   {
@@ -56,8 +56,8 @@ export const timeline: TimelineEntry[] = [
     icon: "umbrella",
     title: { en: "Exchange year, University of Liverpool", pt: "Ano de intercâmbio, University of Liverpool" },
     body: {
-      en: "A year with Prof. Jose A. Lopez-Sanchez's group — plenty of rain included.",
-      pt: "Um ano no grupo do Prof. Jose A. Lopez-Sanchez — com direito a bastante chuva.",
+      en: "A year with Prof. Jose A. Lopez-Sanchez's group, plenty of rain included.",
+      pt: "Um ano no grupo do Prof. Jose A. Lopez-Sanchez, com direito a bastante chuva.",
     },
   },
   {
@@ -66,8 +66,8 @@ export const timeline: TimelineEntry[] = [
     icon: "flask",
     title: { en: "M.Sc. in Inorganic Chemistry, UFMG", pt: "Mestrado em Química Inorgânica, UFMG" },
     body: {
-      en: "Nine months of coursework and lab work — short, intense, a lot of glassware.",
-      pt: "Nove meses de disciplinas e bancada — curto, intenso, muita vidraria.",
+      en: "Nine months of coursework and lab work: short, intense, a lot of glassware.",
+      pt: "Nove meses de disciplinas e bancada: curto, intenso, muita vidraria.",
     },
   },
   {
@@ -76,8 +76,8 @@ export const timeline: TimelineEntry[] = [
     icon: "torii",
     title: { en: "Doctor of Engineering, Shinshu University", pt: "Doutorado em Engenharia, Shinshu University" },
     body: {
-      en: "Four years with Prof. Katsumi Kaneko studying gas adsorption on graphene oxide — the longest stretch of the journey, through some genuinely cold winters.",
-      pt: "Quatro anos com o Prof. Katsumi Kaneko estudando adsorção de gases em óxido de grafeno — a etapa mais longa da jornada, com invernos de verdade frios.",
+      en: "Four years with Prof. Katsumi Kaneko studying gas adsorption on graphene oxide. The longest stretch of the journey, through some genuinely cold winters.",
+      pt: "Quatro anos com o Prof. Katsumi Kaneko estudando adsorção de gases em óxido de grafeno. A etapa mais longa da jornada, com invernos de verdade frios.",
     },
   },
   {
@@ -91,14 +91,14 @@ export const timeline: TimelineEntry[] = [
     },
   },
   {
-    period: "Nov 2023 — present",
+    period: "Nov 2023 – present",
     place: "São Carlos, Brazil",
     icon: "flaskRays",
     current: true,
     title: { en: "Doctoral researcher, UFSCar", pt: "Doutoranda, UFSCar" },
     body: {
-      en: "Back in Brazil, starting a new doctorate as a FAPESP fellow in Prof. Ivo F. Teixeira's lab, designing single-atom photocatalysts — with regular use of the Sirius synchrotron and electron microscopy at CNPEM.",
-      pt: "De volta ao Brasil, iniciando um novo doutorado como bolsista FAPESP no laboratório do Prof. Ivo F. Teixeira, desenhando fotocatalisadores single-atom — com uso frequente do síncrotron Sirius e da microscopia eletrônica do CNPEM.",
+      en: "Back in Brazil, starting a new doctorate as a FAPESP fellow in Prof. Ivo F. Teixeira's lab, designing single-atom photocatalysts, with regular use of the Sirius synchrotron and electron microscopy at CNPEM.",
+      pt: "De volta ao Brasil, iniciando um novo doutorado como bolsista FAPESP no laboratório do Prof. Ivo F. Teixeira, desenhando fotocatalisadores single-atom, com uso frequente do síncrotron Sirius e da microscopia eletrônica do CNPEM.",
     },
   },
 ];

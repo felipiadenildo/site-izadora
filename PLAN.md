@@ -128,3 +128,25 @@ Rodada de feedback pontual sobre o resultado da v2. Decisões confirmadas com o 
 - [x] `astro check` + `npm run build` limpos
 - [x] Revisão visual local: Home/Jornada claro+escuro, EN+PT
 - [ ] Confirmação mobile real (mesma limitação de ferramenta da v2)
+
+---
+
+## v4 — Últimos ajustes antes do deploy (setembro 2026)
+
+- **Bordas nos ícones do header**: removidas (hambúrguer, EN/PT, ☀️/🌙) — a `border-line` (tom sepia/dourado) ficava chamativa demais num ícone pequeno.
+- **Nome e frase do hero**: paravam de quebrar linha à toa. A causa era o `sm:text-5xl` no `<h1>`, que ficava largo demais para o container de 768px assim que passava do breakpoint `sm`. Troquei por `text-4xl` fixo + `md:whitespace-nowrap` (medi a largura real do texto renderizado via devtools antes de decidir o breakpoint). Mesma lógica para a frase-resumo, que também perdeu o `max-w-lg` que forçava quebra cedo.
+- **Linhas horizontais entre seções da Home**: removidas. Eram 8 bordas sepia empilhadas — a separação agora é só espaçamento vertical + o rótulo mono de cada seção, sem regra visual repetida.
+- **Conector da Jornada**: trocado o approach. Antes eram curvas SVG por segmento, posicionadas de forma fixa — não davam conta da altura variável do texto de cada parada, então a curva "desgarrava" do ícone de cima. Agora é uma única linha tracejada contínua atrás da coluna de ícones (ícones com fundo opaco por cima, "cortando" a linha visualmente), com a posição real (topo do primeiro ícone ao centro do último) medida via JS (`getBoundingClientRect`) em vez de estimada em CSS — robusto a qualquer altura de texto.
+- **Travessões**: removidos de todo o texto do site (dados, UI, títulos, meta descriptions) — trocados caso a caso por vírgula, dois-pontos, ponto final (frase quebrada em duas) ou "·", conforme o que ficava mais natural em cada frase. Mantido só em intervalos de data (`2019 – 2023`, com en dash, não em dash) e nos comentários de código (não são texto do site).
+- **Ícones sociais no rodapé**: removidos — já aparecem em Contato, não precisam se repetir.
+
+### Fase 9 — v4 (execução)
+- [x] Bordas removidas de `ThemeToggle`, `LangToggle`, botão hambúrguer
+- [x] Nome/frase do hero sem quebra de linha em telas médias+ (medido via devtools, não chute)
+- [x] Linhas divisórias entre seções da Home removidas
+- [x] Conector da Jornada reescrito como linha única medida via JS
+- [x] Todos os travessões do texto do site revisados e corrigidos (grep confirma: só sobram em comentários de código)
+- [x] Ícones sociais removidos do rodapé
+- [x] `astro check` + `npm run build` limpos
+- [x] Revisão visual local: Home e Jornada, claro/escuro
+- [ ] Deploy no GitHub Pages (próximo passo)

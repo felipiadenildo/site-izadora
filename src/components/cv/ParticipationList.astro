@@ -12,7 +12,7 @@ const lang = getLangFromUrl(Astro.url);
         <span class="font-mono text-xs text-ink-muted">{entry.period}</span>
         <div class="text-sm text-ink">
           <span>{entry.title[lang]}</span>
-          <span class="text-ink-muted"> — {entry.org}</span>
+          <span class="text-ink-muted"> · {entry.org}</span>
         </div>
       </li>
     ))

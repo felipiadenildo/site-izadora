@@ -41,8 +41,8 @@ export const person = {
 export const catalizaProject = {
   name: "CataliIza",
   description: {
-    en: "A tool that parses and organizes GC-MS (gas chromatography–mass spectrometry) chromatography data — built to save a chemist's afternoon.",
-    pt: "Uma ferramenta que processa e organiza dados de cromatografia GC-MS (cromatografia gasosa acoplada à espectrometria de massa) — feita para poupar a tarde de um químico.",
+    en: "A tool that parses and organizes GC-MS (gas chromatography–mass spectrometry) chromatography data, built to save a chemist's afternoon.",
+    pt: "Uma ferramenta que processa e organiza dados de cromatografia GC-MS (cromatografia gasosa acoplada à espectrometria de massa), feita para poupar a tarde de um químico.",
   },
   repoUrl: "https://github.com/felipiadenildo/CatalIza",
   stack: ["Python", "FastAPI", "React", "TypeScript"],

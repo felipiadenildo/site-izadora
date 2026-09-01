@@ -4,8 +4,6 @@ export type Lang = (typeof langs)[number];
 
 export const ui = {
   en: {
-    "site.role": "Chemist — photocatalysis & single-atom catalysis",
-
     "nav.home": "Home",
     "nav.journey": "Journey",
     "nav.blog": "Blog",
@@ -44,7 +42,7 @@ export const ui = {
     "about.journeyCta": "Read the full journey",
 
     "research.summary":
-      "Graphitic carbon nitrides as platforms for single-atom photocatalysis — designing catalysts atom by atom to convert sunlight into useful chemical reactions.",
+      "Graphitic carbon nitrides as platforms for single-atom photocatalysis: designing catalysts atom by atom to convert sunlight into useful chemical reactions.",
     "research.grantLabel": "FAPESP grant",
     "research.advisorLabel": "Advisor",
     "research.interestsLabel": "Research interests",
@@ -56,7 +54,7 @@ export const ui = {
     "projects.viewRepo": "View repository",
     "projects.nextNote": "Next project isn't public yet.",
 
-    "contact.note": "No contact form for now — reach out through one of these.",
+    "contact.note": "No contact form yet. Reach out through one of these instead.",
     "contact.emailPending": "Contact email not published yet.",
     "contact.cvLabel": "CV (PDF)",
     "contact.cvPending": "Coming soon.",
@@ -71,15 +69,13 @@ export const ui = {
     "blog.empty.body":
       "No posts published yet. This page is ready for when there's something worth writing about.",
 
-    "notfound.title": "404 — Reagent not found",
+    "notfound.title": "404: Reagent not found",
     "notfound.body": "Whatever you were looking for isn't on this bench. It may have moved, or never existed.",
     "notfound.cta": "Back to home",
 
-    "underconstruction.default": "Still being put together — check back soon.",
+    "underconstruction.default": "Still being put together. Check back soon.",
   },
   pt: {
-    "site.role": "Química — fotocatálise e catálise single-atom",
-
     "nav.home": "Início",
     "nav.journey": "Jornada",
     "nav.blog": "Blog",
@@ -112,13 +108,13 @@ export const ui = {
     "section.contact": "Contato",
 
     "about.body1":
-      "Izadora trabalha com catálise e química de materiais, com foco em usar luz — em vez de calor — para conduzir reações químicas. Atualmente é doutoranda na UFSCar, no laboratório do Prof. Ivo F. Teixeira, bolsista FAPESP, desenvolvendo catalisadores single-atom ancorados em nitretos de carbono.",
+      "Izadora trabalha com catálise e química de materiais, com foco em usar luz, em vez de calor, para conduzir reações químicas. Atualmente é doutoranda na UFSCar, no laboratório do Prof. Ivo F. Teixeira, bolsista FAPESP, desenvolvendo catalisadores single-atom ancorados em nitretos de carbono.",
     "about.body2":
       "Antes disso, concluiu um doutorado na Shinshu University, no Japão. O caminho até lá passou pela UFMG, uma temporada de pesquisa na Argentina e um ano de intercâmbio no Reino Unido.",
     "about.journeyCta": "Ler a jornada completa",
 
     "research.summary":
-      "Nitretos de carbono grafítico como plataformas para fotocatálise single-atom — catalisadores desenhados átomo por átomo para converter luz solar em reações químicas úteis.",
+      "Nitretos de carbono grafítico como plataformas para fotocatálise single-atom: catalisadores desenhados átomo por átomo para converter luz solar em reações químicas úteis.",
     "research.grantLabel": "Bolsa FAPESP",
     "research.advisorLabel": "Orientador",
     "research.interestsLabel": "Interesses de pesquisa",
@@ -130,7 +126,7 @@ export const ui = {
     "projects.viewRepo": "Ver repositório",
     "projects.nextNote": "O próximo projeto ainda não é público.",
 
-    "contact.note": "Sem formulário de contato por enquanto — pode chamar por um destes.",
+    "contact.note": "Ainda não há formulário de contato. Fale por um destes.",
     "contact.emailPending": "E-mail de contato ainda não publicado.",
     "contact.cvLabel": "Currículo (PDF)",
     "contact.cvPending": "Em breve.",
@@ -145,10 +141,10 @@ export const ui = {
     "blog.empty.body":
       "Nenhum post publicado ainda. Esta página já está pronta pra quando houver algo que valha a pena escrever.",
 
-    "notfound.title": "404 — Reagente não encontrado",
+    "notfound.title": "404: Reagente não encontrado",
     "notfound.body": "O que você procurava não está nesta bancada. Pode ter mudado de lugar, ou nunca ter existido.",
     "notfound.cta": "Voltar ao início",
 
-    "underconstruction.default": "Ainda em preparo — volte em breve.",
+    "underconstruction.default": "Ainda em preparo. Volte em breve.",
   },
 } as const;
